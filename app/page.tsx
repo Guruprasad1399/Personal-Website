@@ -1,11 +1,37 @@
+'use client'
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+
 
 export default function Home() {
+
+  const handleDownload = () => {
+    const resumeUrl = '/Guruprasad_Resume.pdf';
+
+    // Create an invisible link element
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = 'Guruprasad_Resume.pdf'; // Specify the file name
+
+    // Append the link to the document
+    document.body.appendChild(link);
+
+    // Trigger a click on the link to start the download
+    link.click();
+
+    // Remove the link from the document
+    document.body.removeChild(link);
+  };
+
   return (
-    <div className="flex flex-col min-h-screen bg-gray-200">
-      {/* Header */}
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      className="flex flex-col min-h-screen bg-gray-200"
+    >      {/* Header */}
       <header className="bg-gray-800 text-white py-4 w-full">
         <div className="container mx-auto flex items-center justify-center">
           <nav className="flex space-x-4">
@@ -42,25 +68,24 @@ export default function Home() {
         <div className="text-center mb-8">
           <h1 className="text-4xl font-extrabold mb-2 text-gray-800">Welcome to my Full-Stack Development Journey</h1>
           <p className="text-gray-600">
-            Hello, I'm Guruprasad Venkatraman, a dedicated and versatile software developer with
-            3+ years of experience in creating and developing websites, writing API endpoints
-            and automating the deployment process. a mission to create innovative solutions that
-            seamlessly blend technology and user-centric design. My journey in the world of
-            software development has been marked by a passion for crafting responsive
-            web applications and implementing cutting-edge technologies to elevate user experiences.
-            My approach to development goes beyond writing code; it's about
-            solving real-world problems and delivering solutions that make a meaningful impact.
-            I thrive in dynamic environments and enjoy the challenge of staying up-to-date with
-            the latest industry trends to ensure my work is at the forefront of innovation.
+            Hello, I'm Guruprasad Venkatraman, a dedicated and versatile software developer with 3+ years of experience.
+            I bring expertise in a range of programming languages, databases, and cloud computing technologies.
+            My professional journey includes impactful roles, such as Software Developer at SkillNet Solutions, where I excelled in crafting responsive web applications and optimizing data retrieval efficiency.
+            As a Software Engineer at Drughelp-Care, I played a crucial role in enhancing user satisfaction through the implementation of React.js and Angular frameworks.
+            My skills span full-stack development, DevOps, and testing, complemented by a strong educational background, including a Master's in Computer Science from Cleveland State University.
+            Beyond my technical abilities, I am passionate about mentorship, providing tutoring in computer science-related subjects.
+            My commitment to innovation is evident in a diverse project portfolio, showcasing expertise in multi-cloud integration and infrastructure automation.
+            Holding certifications like AWS Certified Solutions Architect reflects my dedication to staying at the forefront of technological advancements.
           </p>
         </div>
 
         <div className="text-center mb-8">
-          <h2 className="font-bold text-gray-700">
+          {/* <h2 className="font-bold text-gray-700">
             <a href="/Guruprasad_Resume.pdf" download>
               <h2 className="hover:underline">DOWNLOAD RESUME</h2>
             </a>
-          </h2>
+          </h2> */}
+          <button className="btn btn-success" onClick={handleDownload}>Download Resume</button>
         </div>
         {/* Skills Section */}
         <section className="text-center my-10">
@@ -69,7 +94,7 @@ export default function Home() {
             {/* Each Skill Category */}
             {[
               { title: 'Programming Languages', skills: 'JavaScript, Java, TypeScript, C, Python, PHP' },
-              { title: 'Web Technologies/ Frameworks', skills: 'Node.js, Spring Boot, Express, React, Vue, Redux, AngularJS, React Native, jQuery, Next JS' },
+              { title: 'Web Technologies/ Frameworks', skills: 'Node.js, Spring Boot, Express, React, Vue, Redux, AngularJS, React Native, jQuery, Next JS, APIGEE' },
               { title: 'Database', skills: 'MongoDB, MSSQL, MySQL, Oracle 12c, PostgreSQL' },
               { title: 'Cloud Computing', skills: 'Azure and AWS Services, Kubernetes, Docker, Terraform' },
               { title: 'DevOps', skills: 'Git, Jenkins, CI/CD, Ansible, Lambda, Apache Kafka, RabbitMQ' },
@@ -101,7 +126,7 @@ export default function Home() {
               <p className="text-gray-800 font-bold">
                 Key Achievements:
               </p>
-              <ul className="list-disc list-inside text-gray-700">
+              <ul className="list-disc list-outside text-gray-700">
                 <li>Implemented GraphQL for efficient querying and manipulation of data, enhancing the flexibility of API interactions.</li>
                 <li>Utilized Express.js to build a performant and modular backend architecture.</li>
                 <li>Integrated with cloud services for seamless scalability and improved response times.</li>
@@ -121,7 +146,7 @@ export default function Home() {
               <p className="text-gray-700 font-bold">
                 Project Details:
               </p>
-              <ul className="list-disc list-inside text-gray-700">
+              <ul className="list-disc list-outside text-gray-700">
                 <li>Developed a React Native app, ShopWiseLocal, for the notJust.dev Hackathon.</li>
                 <li>Supported local businesses by connecting them with customers through detailed business profiles and a rewards system.</li>
                 <li>Implemented a points-based rewards system for users who purchase products from local businesses.</li>
@@ -144,7 +169,7 @@ export default function Home() {
               </p>
               <br />
               <p className="text-gray-700 font-bold">Tech Stack:</p>
-              <ul className="list-disc list-inside text-gray-700">
+              <ul className="list-disc list-outside text-gray-700">
                 <li>Frontend: Angular 12, TypeScript, RxJS, Angular Material, NgRx</li>
                 <li>Backend: Spring Boot 2.5, Java 11, Spring Security, Spring Data JPA, PostgreSQL</li>
                 <li>Database & Storage: PostgreSQL, Amazon S3, Hibernate ORM, Liquibase</li>
@@ -161,7 +186,7 @@ export default function Home() {
               </p>
               <br />
               <p className="text-gray-700 font-bold">Tech Stack:</p>
-              <ul className="list-disc list-inside text-gray-700">
+              <ul className="list-disc list-outside text-gray-700">
                 <li>Mobile App Development: React Native 0.64, JavaScript, TypeScript, Expo, React Navigation, Redux</li>
                 <li>Backend: Node.js, Express, MongoDB, Mongoose, JWT, Socket.io</li>
                 <li>Push Notifications & Cloud Services: FCM, Firebase Authentication, AWS Lambda, DynamoDB, AWS S3</li>
@@ -177,6 +202,6 @@ export default function Home() {
           <p>&copy; 2023 Guruprasad Venkatraman. All rights reserved.</p>
         </div>
       </footer>
-    </div>
+    </motion.div>
   );
 }
