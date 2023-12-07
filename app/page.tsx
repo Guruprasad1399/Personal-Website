@@ -55,8 +55,8 @@ export default function Home() {
           </p>
         </div>
 
-        <div className='text-center mb-8'>
-          <h2 className='font-bold text-gray-700'>
+        <div className="text-center mb-8">
+          <h2 className="font-bold text-gray-700">
             <a href="/Guruprasad_Resume.pdf" download>
               <h2 className="hover:underline">DOWNLOAD RESUME</h2>
             </a>
