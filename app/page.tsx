@@ -1,207 +1,343 @@
 'use client'
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { 
+  Box, Container, Typography, Grid, Card, CardContent, 
+  Button, List, ListItem, ListItemText, ListItemIcon, 
+  Paper, Divider, Chip, Avatar
+} from '@mui/material';
+import { 
+  Download as DownloadIcon,
+  Code as CodeIcon,
+  Web as WebIcon,
+  Storage as StorageIcon,
+  Cloud as CloudIcon,
+  BuildCircle as BuildCircleIcon,
+  BugReport as BugReportIcon,
+  Laptop as LaptopIcon,
+  GitHub
+} from '@mui/icons-material';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 60 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
 
 export default function Home() {
-
   const handleDownload = () => {
     const resumeUrl = '/Guruprasad_Resume.pdf';
-
-    // Create an invisible link element
     const link = document.createElement('a');
     link.href = resumeUrl;
-    link.download = 'Guruprasad_Resume.pdf'; // Specify the file name
-
-    // Append the link to the document
+    link.download = 'Guruprasad_Resume.pdf';
     document.body.appendChild(link);
-
-    // Trigger a click on the link to start the download
     link.click();
-
-    // Remove the link from the document
     document.body.removeChild(link);
   };
 
+  const skillCategories = [
+    { 
+      title: 'Programming Languages', 
+      skills: 'JavaScript, Java, TypeScript, C, Python, PHP',
+      icon: <CodeIcon />
+    },
+    { 
+      title: 'Web Technologies/ Frameworks', 
+      skills: 'Node.js, Spring Boot, Express, React, Vue, Redux, AngularJS, React Native, jQuery, Next JS, APIGEE',
+      icon: <WebIcon />
+    },
+    { 
+      title: 'Database', 
+      skills: 'MongoDB, MSSQL, MySQL, Oracle 12c, PostgreSQL',
+      icon: <StorageIcon />
+    },
+    { 
+      title: 'Cloud Computing', 
+      skills: 'Azure and AWS Services, Kubernetes, Docker, Terraform',
+      icon: <CloudIcon />
+    },
+    { 
+      title: 'DevOps', 
+      skills: 'Git, Jenkins, CI/CD, Ansible, Lambda, Apache Kafka, RabbitMQ',
+      icon: <BuildCircleIcon />
+    },
+    { 
+      title: 'Testing', 
+      skills: 'JUnit, Jest, Cucumber, Unit Testing',
+      icon: <BugReportIcon />
+    },
+    { 
+      title: 'Others', 
+      skills: 'Agile, Scrum, GraphQL, Linux, Shell Scripting, .Net, Data Analysis',
+      icon: <LaptopIcon />
+    },
+  ];
+
+  const projects = [
+    {
+      title: "Cloud-Native E-Commerce Backend",
+      description: "Developed a robust cloud-native e-commerce backend using GraphQL and Express.js, providing a scalable and efficient solution for managing online transactions and product data.",
+      achievements: [
+        "Implemented GraphQL for efficient querying and manipulation of data, enhancing the flexibility of API interactions.",
+        "Utilized Express.js to build a performant and modular backend architecture.",
+        "Integrated with cloud services for seamless scalability and improved response times.",
+        "Designed and implemented database schemas for optimal data storage and retrieval.",
+        "Ensured data security and integrity through robust authentication and authorization mechanisms.",
+        "Collaborated with the front-end team to define API contracts and ensure smooth communication between the layers of the application."
+      ]
+    },
+    {
+      title: "Shopify Local App",
+      description: "Participated in a hackathon conducted by Not just dev, contributing to the development of a React Native application that supports local businesses.",
+      details: [
+        "Developed a React Native app, ShopWiseLocal, for the notJust.dev Hackathon.",
+        "Supported local businesses by connecting them with customers through detailed business profiles and a rewards system.",
+        "Implemented a points-based rewards system for users who purchase products from local businesses.",
+        "Utilized React Native and Expo for cross-platform development.",
+        "Focused on innovation by providing a unique approach to support local communities.",
+        "Enabled users to explore and support local businesses, serving as a discovery and engagement platform."
+      ],
+      githubLink: "https://github.com/Guruprasad1399/shopWiseLocal.git"
+    },
+    {
+      title: "Angular Blog Platform",
+      description: "Built a blog platform using Angular and Spring Boot.",
+      techStack: {
+        frontend: "Angular 12, TypeScript, RxJS, Angular Material, NgRx",
+        backend: "Spring Boot 2.5, Java 11, Spring Security, Spring Data JPA, PostgreSQL",
+        database: "PostgreSQL, Amazon S3, Hibernate ORM, Liquibase",
+        deployment: "Docker, Kubernetes, AWS, Jenkins, NGINX",
+        testing: "Jasmine, Karma, JUnit, Mockito, Postman, SonarQube, Cypress"
+      }
+    },
+    {
+      title: "React Native Chat Application",
+      description: "Created various chat applications using React Native. Published two apps on the Play Store.",
+      techStack: {
+        mobile: "React Native 0.64, JavaScript, TypeScript, Expo, React Navigation, Redux",
+        backend: "Node.js, Express, MongoDB, Mongoose, JWT, Socket.io",
+        cloud: "FCM, Firebase Authentication, AWS Lambda, DynamoDB, AWS S3",
+        deployment: "GitHub Actions, Heroku, Netlify, Docker, AWS Amplify",
+        testing: "Jest, Enzyme, Postman, Detox, ESLint, Prettier, GitHub Actions"
+      }
+    }
+  ];
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      className="flex flex-col min-h-screen bg-gray-200"
-    >      {/* Header */}
-      <header className="bg-gray-800 text-white py-4 w-full">
-        <div className="container mx-auto flex items-center justify-center">
-          <nav className="flex space-x-4">
-            <Link href="/">
-              <p className="hover:underline">Home</p>
-            </Link>
-            <Link href="/about">
-              <p className="hover:underline">About</p>
-            </Link>
-            <Link href="https://www.linkedin.com/in/guruprasad-venkatraman-588591153/">
-              <p className="hover:underline">LinkedIn</p>
-            </Link>
-            <Link href="https://github.com/Guruprasad1399?tab=repositories">
-              <p className="hover:underline">Github</p>
-            </Link>
-          </nav>
-        </div>
-      </header>
-
-      <main className="flex flex-col items-center justify-center p-10 flex-grow">
-
-        {/* Professional Photo */}
-        <div className="mb-8 rounded-full overflow-hidden shadow-lg bg-gradient-to-r from-cyan-500 to-blue-500">
-          <Image
-            src="/GuruprasadVenkatraman.jpg"
-            alt="Professional Photo"
-            width={200}
-            height={200}
-            className="rounded-full"
-          />
-        </div>
-
-        {/* Welcome Message */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-extrabold mb-2 text-gray-800">Welcome to my Full-Stack Development Journey</h1>
-          <p className="text-gray-600">
-            Hello, I'm Guruprasad Venkatraman, a dedicated and versatile software developer with 3+ years of experience.
-            I bring expertise in a range of programming languages, databases, and cloud computing technologies.
-            My professional journey includes impactful roles, such as Software Developer at SkillNet Solutions, where I excelled in crafting responsive web applications and optimizing data retrieval efficiency.
-            As a Software Engineer at Drughelp-Care, I played a crucial role in enhancing user satisfaction through the implementation of React.js and Angular frameworks.
-            My skills span full-stack development, DevOps, and testing, complemented by a strong educational background, including a Master's in Computer Science from Cleveland State University.
-            Beyond my technical abilities, I am passionate about mentorship, providing tutoring in computer science-related subjects.
-            My commitment to innovation is evident in a diverse project portfolio, showcasing expertise in multi-cloud integration and infrastructure automation.
-            Holding certifications like AWS Certified Solutions Architect reflects my dedication to staying at the forefront of technological advancements.
-          </p>
-        </div>
-
-        <div className="text-center mb-8">
-          {/* <h2 className="font-bold text-gray-700">
-            <a href="/Guruprasad_Resume.pdf" download>
-              <h2 className="hover:underline">DOWNLOAD RESUME</h2>
-            </a>
-          </h2> */}
-          <button className="btn btn-success" onClick={handleDownload}>Download Resume</button>
-        </div>
+    <Box className="flex flex-col min-h-screen">
+      <Navbar />
+      
+      <Container component="main" sx={{ flexGrow: 1, py: 4 }}>
+        {/* Hero Section with Photo */}
+        <motion.div
+          initial="initial"
+          animate="animate"
+          variants={fadeInUp}
+          className="text-center mb-10"
+        >
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-block"
+          >
+            <Avatar
+              src="/GuruprasadVenkatraman.jpg"
+              alt="Guruprasad Venkatraman"
+              sx={{ 
+                width: 200, 
+                height: 200, 
+                margin: '0 auto', 
+                mb: 3,
+                border: '4px solid #1976d2',
+                boxShadow: '0 10px 25px rgba(0,0,0,0.2)'
+              }}
+            />
+          </motion.div>
+          
+          <Typography variant="h3" component="h1" fontWeight="bold" gutterBottom>
+            Welcome to my Full-Stack Development Journey
+          </Typography>
+          
+          <Paper elevation={0} sx={{ p: 3, mb: 4, bgcolor: 'rgba(255,255,255,0.7)', borderRadius: 4 }}>
+            <Typography variant="body1" color="text.secondary" paragraph>
+              Hello, I'm Guruprasad Venkatraman, a dedicated and versatile software developer with 3+ years of experience.
+              I bring expertise in a range of programming languages, databases, and cloud computing technologies.
+              My professional journey includes impactful roles at companies like SkillNet Solutions and Drughelp-Care,
+              where I excelled in crafting responsive web applications and optimizing user experiences.
+              My skills span full-stack development, DevOps, and testing, complemented by a strong educational background,
+              including a Master's in Computer Science from Cleveland State University.
+            </Typography>
+          </Paper>
+          
+          {/* Resume Download Button */}
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Button 
+              variant="contained" 
+              size="large" 
+              startIcon={<DownloadIcon />}
+              onClick={handleDownload}
+              sx={{ mb: 5 }}
+            >
+              Download Resume
+            </Button>
+          </motion.div>
+        </motion.div>
+        
         {/* Skills Section */}
-        <section className="text-center my-10">
-          <h2 className="text-3xl font-bold mb-4 text-gray-800">Skills</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Each Skill Category */}
-            {[
-              { title: 'Programming Languages', skills: 'JavaScript, Java, TypeScript, C, Python, PHP' },
-              { title: 'Web Technologies/ Frameworks', skills: 'Node.js, Spring Boot, Express, React, Vue, Redux, AngularJS, React Native, jQuery, Next JS, APIGEE' },
-              { title: 'Database', skills: 'MongoDB, MSSQL, MySQL, Oracle 12c, PostgreSQL' },
-              { title: 'Cloud Computing', skills: 'Azure and AWS Services, Kubernetes, Docker, Terraform' },
-              { title: 'DevOps', skills: 'Git, Jenkins, CI/CD, Ansible, Lambda, Apache Kafka, RabbitMQ' },
-              { title: 'Testing', skills: 'JUnit, Jest, Cucumber, Unit Testing' },
-              { title: 'Others', skills: 'Agile, Scrum, GraphQL, Linux, Shell Scripting, .Net, Data Analysis' },
-            ].map((category) => (
-              <div key={category.title} className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-lg font-bold mb-2 text-gray-800">{category.title}</h3>
-                <p className="text-gray-700">{category.skills}</p>
-              </div>
-            ))}
-
-          </div>
-        </section>
-
+        <Box component="section" sx={{ mb: 8 }}>
+          <Typography variant="h4" component="h2" fontWeight="bold" textAlign="center" gutterBottom>
+            Skills
+          </Typography>
+          
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
+          >
+            <Grid container spacing={3}>
+              {skillCategories.map((category, index) => (
+                <Grid size={{ xs: 12, sm: 6, md: 4 }} key={category.title}>
+                  <motion.div
+                    variants={fadeInUp}
+                    whileHover={{ y: -5, boxShadow: '0 10px 25px rgba(0,0,0,0.1)' }}
+                    style={{ width: '100%' }}
+                  >
+                    <Card sx={{ height: '100%', borderRadius: 3, overflow: 'visible' }}>
+                      <CardContent>
+                        <Box display="flex" alignItems="center" mb={1}>
+                          <Avatar sx={{ bgcolor: 'primary.main', mr: 1 }}>
+                            {category.icon}
+                          </Avatar>
+                          <Typography variant="h6" component="h3" fontWeight="bold">
+                            {category.title}
+                          </Typography>
+                        </Box>
+                        <Typography variant="body2" color="text.secondary">
+                          {category.skills}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </Grid>
+              ))}
+            </Grid>
+          </motion.div>
+        </Box>
+        
         {/* Projects Section */}
-        <section className="text-center my-10">
-          <h2 className="text-3xl font-bold mb-4 text-gray-800">Latest Projects</h2>
-          {/* Showcase your latest projects with brief descriptions */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            {/* Project 1: Cloud-Native E-Commerce Backend */}
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-lg font-bold mb-2 text-gray-800">Cloud-Native E-Commerce Backend</h3>
-              <p className="text-gray-700">
-                Developed a robust cloud-native e-commerce backend using GraphQL and Express.js, providing a scalable and efficient solution for managing online transactions and product data.
-              </p>
-              <br />
-              <p className="text-gray-800 font-bold">
-                Key Achievements:
-              </p>
-              <ul className="list-disc list-outside text-gray-700">
-                <li>Implemented GraphQL for efficient querying and manipulation of data, enhancing the flexibility of API interactions.</li>
-                <li>Utilized Express.js to build a performant and modular backend architecture.</li>
-                <li>Integrated with cloud services for seamless scalability and improved response times.</li>
-                <li>Designed and implemented database schemas for optimal data storage and retrieval.</li>
-                <li>Ensured data security and integrity through robust authentication and authorization mechanisms.</li>
-                <li>Collaborated with the front-end team to define API contracts and ensure smooth communication between the layers of the application.</li>
-              </ul>
-            </div>
-
-            {/* Project 2: Shopify Local App */}
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-lg font-bold mb-2 text-gray-800">Shopify Local App</h3>
-              <p className="text-gray-700">
-                Participated in a hackathon conducted by Not just dev, contributing to the development of a React Native application that supports local businesses.
-              </p>
-              <br />
-              <p className="text-gray-700 font-bold">
-                Project Details:
-              </p>
-              <ul className="list-disc list-outside text-gray-700">
-                <li>Developed a React Native app, ShopWiseLocal, for the notJust.dev Hackathon.</li>
-                <li>Supported local businesses by connecting them with customers through detailed business profiles and a rewards system.</li>
-                <li>Implemented a points-based rewards system for users who purchase products from local businesses.</li>
-                <li>Utilized React Native and Expo for cross-platform development.</li>
-                <li>Focused on innovation by providing a unique approach to support local communities.</li>
-                <li>Enabled users to explore and support local businesses, serving as a discovery and engagement platform.</li>
-                <li>Explore the project codebase at the repository:
-                  <Link href="https://github.com/Guruprasad1399/shopWiseLocal.git">
-                    <p className="hover:underline font-bold">Github</p>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Project 3: Angular Blog Platform */}
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-lg font-bold mb-2 text-gray-800">Angular Blog Platform</h3>
-              <p className="text-gray-700">
-                Built a blog platform using Angular and Spring Boot.
-              </p>
-              <br />
-              <p className="text-gray-700 font-bold">Tech Stack:</p>
-              <ul className="list-disc list-outside text-gray-700">
-                <li>Frontend: Angular 12, TypeScript, RxJS, Angular Material, NgRx</li>
-                <li>Backend: Spring Boot 2.5, Java 11, Spring Security, Spring Data JPA, PostgreSQL</li>
-                <li>Database & Storage: PostgreSQL, Amazon S3, Hibernate ORM, Liquibase</li>
-                <li>Deployment & Infrastructure: Docker, Kubernetes, AWS, Jenkins, NGINX</li>
-                <li>Testing & QA: Jasmine, Karma, JUnit, Mockito, Postman, SonarQube, Cypress</li>
-              </ul>
-            </div>
-
-            {/* Project 4: React Native Chat Application */}
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-lg font-bold mb-2 text-gray-800">React Native Chat Application</h3>
-              <p className="text-gray-700">
-                Created various chat applications using React Native. Published two apps on the Play Store.
-              </p>
-              <br />
-              <p className="text-gray-700 font-bold">Tech Stack:</p>
-              <ul className="list-disc list-outside text-gray-700">
-                <li>Mobile App Development: React Native 0.64, JavaScript, TypeScript, Expo, React Navigation, Redux</li>
-                <li>Backend: Node.js, Express, MongoDB, Mongoose, JWT, Socket.io</li>
-                <li>Push Notifications & Cloud Services: FCM, Firebase Authentication, AWS Lambda, DynamoDB, AWS S3</li>
-                <li>Deployment & Infrastructure: GitHub Actions, Heroku, Netlify, Docker, AWS Amplify</li>
-                <li>Testing & QA: Jest, Enzyme, Postman, Detox, ESLint, Prettier, GitHub Actions</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-      </main>
-      <footer className="bg-gray-800 text-white py-4">
-        <div className="container mx-auto text-center">
-          <p>&copy; 2023 Guruprasad Venkatraman. All rights reserved.</p>
-        </div>
-      </footer>
-    </motion.div>
+        <Box component="section">
+          <Typography variant="h4" component="h2" fontWeight="bold" textAlign="center" gutterBottom mb={4}>
+            Latest Projects
+          </Typography>
+          
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
+          >
+            <Grid container spacing={4}>
+              {projects.map((project, index) => (
+                <Grid size={{ xs: 12, md: 6 }} key={project.title}>
+                  <motion.div
+                    variants={fadeInUp}
+                    whileHover={{ y: -5, boxShadow: '0 10px 25px rgba(0,0,0,0.1)' }}
+                    style={{ width: '100%' }}
+                  >
+                    <Card sx={{ height: '100%', borderRadius: 3 }}>
+                      <CardContent>
+                        <Typography variant="h5" component="h3" fontWeight="bold" gutterBottom>
+                          {project.title}
+                        </Typography>
+                        
+                        <Typography variant="body2" color="text.secondary" paragraph>
+                          {project.description}
+                        </Typography>
+                        
+                        {project.achievements && (
+                          <>
+                            <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+                              Key Achievements:
+                            </Typography>
+                            <List dense>
+                              {project.achievements.map((achievement, i) => (
+                                <ListItem key={i} sx={{ pl: 0 }}>
+                                  <ListItemIcon sx={{ minWidth: 28 }}>•</ListItemIcon>
+                                  <ListItemText primary={achievement} />
+                                </ListItem>
+                              ))}
+                            </List>
+                          </>
+                        )}
+                        
+                        {project.details && (
+                          <>
+                            <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+                              Project Details:
+                            </Typography>
+                            <List dense>
+                              {project.details.map((detail, i) => (
+                                <ListItem key={i} sx={{ pl: 0 }}>
+                                  <ListItemIcon sx={{ minWidth: 28 }}>•</ListItemIcon>
+                                  <ListItemText primary={detail} />
+                                </ListItem>
+                              ))}
+                            </List>
+                            {project.githubLink && (
+                              <Button 
+                                variant="outlined" 
+                                size="small" 
+                                href={project.githubLink}
+                                target="_blank"
+                                startIcon={<GitHub />}
+                                sx={{ mt: 1 }}
+                              >
+                                View on GitHub
+                              </Button>
+                            )}
+                          </>
+                        )}
+                        
+                        {project.techStack && (
+                          <>
+                            <Typography variant="subtitle1" fontWeight="bold" gutterBottom mt={2}>
+                              Tech Stack:
+                            </Typography>
+                            <Grid container spacing={1}>
+                              {Object.entries(project.techStack).map(([key, value]) => (
+                                <Grid size={{ xs: 12 }} key={key}>
+                                  <Chip 
+                                    label={`${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}`}
+                                    sx={{ mb: 0.5 }}
+                                  />
+                                </Grid>
+                              ))}
+                            </Grid>
+                          </>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </Grid>
+              ))}
+            </Grid>
+          </motion.div>
+        </Box>
+      </Container>
+      
+      <Footer />
+    </Box>
   );
 }
