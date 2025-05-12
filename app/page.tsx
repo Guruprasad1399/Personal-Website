@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { 
   Box, Container, Typography, Grid, Card, CardContent, 
   Button, List, ListItem, ListItemText, ListItemIcon, 
-  Paper, Divider, Chip, Avatar
+  Paper, Divider, Chip, Avatar, Alert
 } from '@mui/material';
 import { 
   Download as DownloadIcon,
@@ -16,7 +16,11 @@ import {
   BuildCircle as BuildCircleIcon,
   BugReport as BugReportIcon,
   Laptop as LaptopIcon,
-  GitHub
+  GitHub,
+  Psychology as PsychologyIcon,
+  Lightbulb as LightbulbIcon,
+  AutoAwesome as AutoAwesomeIcon,
+  SmartToy as SmartToyIcon
 } from '@mui/icons-material';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -46,6 +50,11 @@ export default function Home() {
   };
 
   const skillCategories = [
+    {
+      title: 'AI & Machine Learning',
+      skills: 'LLM Integration, Prompt Engineering, AI Orchestration, Vector Databases, RAG, Hugging Face, LangChain, OpenAI API',
+      icon: <SmartToyIcon />
+    },
     { 
       title: 'Programming Languages', 
       skills: 'JavaScript, Java, TypeScript, C, Python, PHP',
@@ -58,23 +67,28 @@ export default function Home() {
     },
     { 
       title: 'Database', 
-      skills: 'MongoDB, MSSQL, MySQL, Oracle 12c, PostgreSQL',
+      skills: 'MongoDB, MSSQL, MySQL, Oracle 12c, PostgreSQL, Vector Databases (Pinecone, Chroma)',
       icon: <StorageIcon />
     },
     { 
       title: 'Cloud Computing', 
-      skills: 'Azure and AWS Services, Kubernetes, Docker, Terraform',
+      skills: 'Azure and AWS Services, Kubernetes, Docker, Terraform, AWS Lambda, Azure Functions',
       icon: <CloudIcon />
     },
     { 
       title: 'DevOps', 
-      skills: 'Git, Jenkins, CI/CD, Ansible, Lambda, Apache Kafka, RabbitMQ',
+      skills: 'Git, Jenkins, CI/CD, Ansible, Lambda, Apache Kafka, RabbitMQ, GitHub Actions',
       icon: <BuildCircleIcon />
     },
     { 
       title: 'Testing', 
       skills: 'JUnit, Jest, Cucumber, Unit Testing',
       icon: <BugReportIcon />
+    },
+    { 
+      title: 'Modern Development', 
+      skills: 'AI-Assisted Development, Prompt Engineering, LLM Integration, Microservices Architecture, Serverless Computing',
+      icon: <AutoAwesomeIcon />
     },
     { 
       title: 'Others', 
@@ -84,6 +98,18 @@ export default function Home() {
   ];
 
   const projects = [
+    {
+      title: "AI-Powered Document Analysis System",
+      description: "Developed an intelligent document processing system that leverages LLMs and vector databases to extract, analyze, and summarize information from various document formats.",
+      achievements: [
+        "Implemented Retrieval Augmented Generation (RAG) using LangChain and vector databases to provide context-aware document analysis.",
+        "Built a custom prompt engineering system that optimizes LLM interactions for specific document types and queries.",
+        "Integrated with OpenAI and Hugging Face models to provide flexible AI capabilities based on specific use cases.",
+        "Created a scalable architecture using AWS Lambda and S3 for document storage and processing.",
+        "Developed a React-based frontend that visualizes document insights and allows for interactive querying.",
+        "Implemented robust security measures to ensure sensitive document data remains protected throughout the AI processing pipeline."
+      ]
+    },
     {
       title: "Cloud-Native E-Commerce Backend",
       description: "Developed a robust cloud-native e-commerce backend using GraphQL and Express.js, providing a scalable and efficient solution for managing online transactions and product data.",
@@ -171,13 +197,43 @@ export default function Home() {
           <Paper elevation={0} sx={{ p: 3, mb: 4, bgcolor: 'rgba(255,255,255,0.7)', borderRadius: 4 }}>
             <Typography variant="body1" color="text.secondary" paragraph>
               Hello, I'm Guruprasad Venkatraman, a dedicated and versatile software developer with 3+ years of experience.
-              I bring expertise in a range of programming languages, databases, and cloud computing technologies.
-              My professional journey includes impactful roles at companies like Nomura, Hinckley Medical, SkillNet Solutions,
-              and Cleveland State University, where I excelled in crafting responsive web applications and optimizing user experiences.
-              My skills span full-stack development, DevOps, and testing, complemented by a strong educational background,
+              I bring expertise in a range of programming languages, databases, and cloud computing technologies, with a growing focus on AI integration and modern development practices.
+              My professional journey includes impactful roles at companies like Nomura, where I contribute to AI-driven projects and machine learning model integrations,
+              as well as Hinckley Medical, SkillNet Solutions, and Cleveland State University, where I excelled in crafting responsive web applications and optimizing user experiences.
+              My skills span full-stack development, DevOps, AI orchestration, and testing, complemented by a strong educational background,
               including a Master's in Computer Science from Cleveland State University.
             </Typography>
           </Paper>
+          
+          {/* AI & Modern Development Highlight */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            <Alert 
+              severity="info" 
+              icon={<PsychologyIcon fontSize="inherit" />}
+              sx={{ 
+                mb: 5, 
+                borderRadius: 2, 
+                '& .MuiAlert-icon': { 
+                  color: 'primary.main',
+                  alignItems: 'center'
+                }
+              }}
+            >
+              <Typography variant="subtitle1" fontWeight="bold">
+                Embracing the Future of Development
+              </Typography>
+              <Typography variant="body2">
+                As development practices evolve in 2025, I'm actively adapting by integrating AI capabilities into my workflow, 
+                mastering prompt engineering, and orchestrating AI services to build more intelligent applications. 
+                At Nomura, I've gained hands-on experience with machine learning model deployments and AI platform development, 
+                positioning me at the forefront of this technological revolution.
+              </Typography>
+            </Alert>
+          </motion.div>
           
           {/* Resume Download Button */}
           <motion.div 

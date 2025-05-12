@@ -6,7 +6,10 @@ import {
   Container, 
   Typography, 
   Paper, 
-  Chip
+  Chip,
+  List,
+  ListItem,
+  ListItemText
 } from '@mui/material';
 import Grid from '@mui/system/Grid';
 import {
@@ -154,8 +157,11 @@ export default function About() {
                   Skills Overview
                 </Typography>
               </Box>
-              <Typography variant="body1">
+              <Typography variant="body1" paragraph>
                 I specialize in a variety of technologies including Java, JavaScript, TypeScript, C, MongoDB, MSSQL, Node, Express, React, Vue, Redux, jQuery, NoSQL, Git, Spring, Spring Boot, Hibernate ORM, AngularJS, React-native, Kubernetes, Docker, MySQL, Python, GraphQL, Linux, Shell Scripting, PHP, .Net, Jenkins, Azure, AWS, Cloud Computing, CI/CD, JUnit, Jest, Cucumber, Unit Testing, Ansible, Lambda, Apache Kafka, Terraform, RabbitMQ. I have experience in Microservices, Distributed Systems, Frontend, Backend, and Full-Stack development.
+              </Typography>
+              <Typography variant="body1" paragraph>
+                <strong>AI & Modern Development Focus:</strong> As development practices evolve in 2025, I'm actively expanding my expertise in AI technologies including LLM Integration, Prompt Engineering, AI Orchestration, Vector Databases, RAG (Retrieval Augmented Generation), and AI frameworks like LangChain and Hugging Face. I'm passionate about building intelligent applications that leverage these cutting-edge technologies while maintaining a focus on scalability, security, and performance.
               </Typography>
             </Paper>
           </motion.div>
