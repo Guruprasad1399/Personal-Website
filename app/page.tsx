@@ -172,8 +172,8 @@ export default function Home() {
             <Typography variant="body1" color="text.secondary" paragraph>
               Hello, I'm Guruprasad Venkatraman, a dedicated and versatile software developer with 3+ years of experience.
               I bring expertise in a range of programming languages, databases, and cloud computing technologies.
-              My professional journey includes impactful roles at companies like SkillNet Solutions and Drughelp-Care,
-              where I excelled in crafting responsive web applications and optimizing user experiences.
+              My professional journey includes impactful roles at companies like Nomura, Hinckley Medical, SkillNet Solutions,
+              and Cleveland State University, where I excelled in crafting responsive web applications and optimizing user experiences.
               My skills span full-stack development, DevOps, and testing, complemented by a strong educational background,
               including a Master's in Computer Science from Cleveland State University.
             </Typography>

@@ -45,9 +45,9 @@ const staggerContainer = {
 export default function About() {
   const experiences = [
     {
-      title: "AI Engineer",
+      title: "Software Analyst",
       company: "Nomura",
-      location: "New York, NY, USA",
+      location: "United States",
       period: "April 21, 2024 - Present",
       responsibilities: [
         "Contributing to AI-driven projects by developing backend microservices and supporting cloud integrations.",
@@ -59,45 +59,58 @@ export default function About() {
       ]
     },
     {
-      title: "Software Developer",
-      company: "SkillNet Solutions",
-      location: "Twinsburg, OH, USA",
-      period: "June 2023 - October 2023",
+      title: "Full Stack Developer",
+      company: "Hinckley Medical",
+      location: "United States",
+      period: "January 2024 - April 2024",
       responsibilities: [
-        "Proposed and created responsive web applications using JavaScript, React JS, and Redux focusing on user interface design and interactivity.",
-        "Developed RESTful API services using Node.js, seamlessly integrating with the React Native application and improving data retrieval efficiency by 50%.",
-        "Conducted extensive testing and debugging, reducing application downtimes by 25% and enhancing overall reliability.",
+        "Developed responsive web applications using React Native and React.js.",
+        "Implemented user interface components and optimized user experience.",
+        "Integrated RESTful APIs to facilitate seamless communication between front-end and back-end systems.",
+        "Conducted testing and debugging to ensure application reliability and performance.",
+        "Collaborated with cross-functional teams to deliver high-quality software solutions."
+      ]
+    },
+    {
+      title: "Software Developer Trainee",
+      company: "SkillNet Solutions",
+      location: "United States",
+      period: "June 2023 - August 2023",
+      responsibilities: [
+        "Led the creation of responsive web applications using JavaScript, React JS, and Redux focusing on user interface design and interactivity.",
+        "Integrated RESTful API services using Spring Boot, achieving a 50% improvement in data retrieval efficiency.",
+        "Elevated application reliability by 25% through meticulous testing and debugging.",
         "Integrated cloud-based database services, optimizing application functionality and reducing response time by 40%."
       ]
     },
     {
-      title: "Full Stack Engineer",
-      company: "Drughelp-Care",
-      location: "Cleveland, OH, USA",
-      period: "February 2022 - May 2023",
+      title: "Full Stack Developer",
+      company: "Cleveland State University",
+      location: "United States",
+      period: "January 2022 - May 2023",
       responsibilities: [
-        "Spearheaded the implementation of React.js and Angular frameworks to create scalable front-end components, resulting in a 50% increase in user satisfaction and a 25% decrease in bounce rate.",
-        "Worked closely with backend teams on API development and integration, ensuring seamless full-stack functionality.",
+        "Orchestrated the implementation of React.js and Laravel frameworks, resulting in a 50% increase in user satisfaction and a 25% decrease in bounce rate.",
+        "Collaborated with backend teams on API development and integration, ensuring seamless full-stack functionality.",
         "Managed state and data flow in applications, leading to a 15% boost in efficiency and scalability.",
-        "Transformed the marketing platform's user-experience testing process by integrating Nightwatch and Selenium, cutting down testing time by 60%."
+        "Transformed the user-experience testing process by integrating Nightwatch and Selenium, cutting testing time by 60%."
       ]
     },
     {
-      title: "Mobile Application Developer",
-      company: "Stack Smith",
-      location: "Odisha, India",
-      period: "August 2021 - February 2022",
+      title: "React Native Developer",
+      company: "StackSmith Consultancy",
+      location: "India",
+      period: "October 2021 - March 2022",
       responsibilities: [
-        "Integrated cloud-based database services for enhanced application functionality. Built RESTful API services using Node.js that integrate with the React Native application.",
-        "Directed a team of 8 in the advanced development of React Native mobile apps, achieving a 30% enhancement in system performance. This pivotal project led to a 40% increase in user engagement and contributed to a 25% growth in annual revenue.",
-        "Performed unit testing and debugging to identify and resolve software bugs, ensuring smooth application performance.",
-        "Configured continuous integration tools such as Jenkins for automated deployment processes."
+        "Integrated cloud-based database services and developed RESTful API services using Node.js.",
+        "Integrated push notifications into mobile apps through Firebase Cloud Messaging.",
+        "Led a team of 8 in advanced development of React Native mobile apps, achieving a 30% enhancement in system performance and contributing to a 40% increase in user engagement.",
+        "Performed unit testing, debugging, and configured continuous integration tools such as Jenkins for automated deployment processes."
       ]
     },
     {
       title: "Software Engineer",
       company: "Triloki Smart Systems",
-      location: "Bangalore, India",
+      location: "India",
       period: "August 2020 - July 2021",
       responsibilities: [
         "Streamlined website deployment processes using Jenkins, reducing deployment times by 50% and improving operational efficiency.",
@@ -109,16 +122,16 @@ export default function About() {
 
   const education = [
     {
-      degree: "Master of Science, Computer Science",
+      degree: "Master's degree, Computer Science",
       institution: "Cleveland State University",
       location: "Cleveland, OH, USA",
       period: "January 2022 - May 2023"
     },
     {
-      degree: "Bachelor of Engineering, Electronics and Computer Engineering",
-      institution: "Anna University",
+      degree: "Bachelor of Engineering - BE, Electrical, Electronics and Communications Engineering",
+      institution: "Anand Institute Of Higher Technology",
       location: "Chennai, TN, India",
-      period: "August 2016 - July 2020"
+      period: "2016 - 2020"
     }
   ];
 
