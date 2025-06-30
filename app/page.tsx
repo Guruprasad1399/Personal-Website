@@ -3,23 +3,24 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
-	Box,
-	Container,
-	Typography,
-	Grid,
-	Card,
-	CardContent,
-	Button,
-	List,
-	ListItem,
-	ListItemText,
-	ListItemIcon,
-	Paper,
-	Divider,
-	Chip,
-	Avatar,
-	Alert,
+        Box,
+        Container,
+        Typography,
+        Grid,
+        Card,
+        CardContent,
+        Button,
+        List,
+        ListItem,
+        ListItemText,
+        ListItemIcon,
+        Paper,
+        Divider,
+        Chip,
+        Avatar,
+        Alert,
 } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import {
 	Download as DownloadIcon,
 	Code as CodeIcon,
@@ -52,8 +53,9 @@ const staggerContainer = {
 };
 
 export default function Home() {
-	const handleDownload = () => {
-		const resumeUrl = "/Guruprasad_Resume.pdf";
+        const theme = useTheme();
+        const handleDownload = () => {
+                const resumeUrl = "/Guruprasad_Resume.pdf";
 		const link = document.createElement("a");
 		link.href = resumeUrl;
 		link.download = "Guruprasad_Resume.pdf";
@@ -211,7 +213,7 @@ export default function Home() {
 								height: 200,
 								margin: "0 auto",
 								mb: 3,
-								border: "4px solid #1976d2",
+                                                                border: `4px solid ${theme.palette.primary.main}`,
 								boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
 							}}
 						/>
