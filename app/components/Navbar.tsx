@@ -1,11 +1,12 @@
 'use client';
 
 import React from 'react';
-import { AppBar, Toolbar, Container, Button, Box, useMediaQuery, IconButton, Drawer, List, ListItem } from '@mui/material';
-import { HomeRounded, InfoRounded, LinkedIn, GitHub, Menu as MenuIcon } from '@mui/icons-material';
+import { AppBar, Toolbar, Container, Button, Box, useMediaQuery, IconButton, Drawer, List, ListItem, useTheme } from '@mui/material';
+import { HomeRounded, InfoRounded, LinkedIn, GitHub, Menu as MenuIcon, Brightness4, Brightness7 } from '@mui/icons-material';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
+import { ColorModeContext } from './ThemeRegistry/ThemeRegistry';
 
 const navItems = [
   { name: 'Home', href: '/', icon: <HomeRounded /> },
@@ -18,6 +19,8 @@ export default function Navbar() {
   const isMobile = useMediaQuery('(max-width:600px)');
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const pathname = usePathname();
+  const theme = useTheme();
+  const colorMode = React.useContext(ColorModeContext);
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
@@ -53,7 +56,13 @@ export default function Navbar() {
   );
 
   return (
-    <AppBar position="static" sx={{ marginBottom: 2, backgroundColor: '#1E293B' }}>
+    <AppBar
+      position="static"
+      sx={{
+        marginBottom: 2,
+        background: 'linear-gradient(90deg, #0f172a, #1e293b)',
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: isMobile ? 'flex-end' : 'center' }}>
           {isMobile ? (
@@ -99,6 +108,9 @@ export default function Navbar() {
               <NavLinks />
             </Box>
           )}
+          <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+            {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
+          </IconButton>
         </Toolbar>
       </Container>
     </AppBar>

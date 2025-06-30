@@ -1,33 +1,36 @@
 import { createTheme } from '@mui/material/styles';
-import { Roboto } from 'next/font/google';
+import type { PaletteMode, ThemeOptions } from '@mui/material';
+import { Inter } from 'next/font/google';
 
-const roboto = Roboto({
+const inter = Inter({
   weight: ['300', '400', '500', '700'],
   subsets: ['latin'],
   display: 'swap',
 });
 
-const theme = createTheme({
+export const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
   typography: {
-    fontFamily: roboto.style.fontFamily,
+    fontFamily: inter.style.fontFamily,
   },
   palette: {
+    mode,
     primary: {
-      main: '#1976d2',
+      main: '#6366f1',
     },
     secondary: {
-      main: '#dc004e',
+      main: '#f43f5e',
     },
     background: {
-      default: '#f5f5f5',
+      default: mode === 'light' ? '#f8fafc' : '#0f172a',
+      paper: mode === 'light' ? '#ffffff' : '#1e293b',
     },
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
-          textTransform: 'none',
+          borderRadius: 12,
+          textTransform: 'none' as const,
         },
       },
     },
@@ -41,4 +44,3 @@ const theme = createTheme({
   },
 });
 
-export default theme;

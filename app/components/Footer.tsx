@@ -1,15 +1,18 @@
+'use client';
+
 import React from 'react';
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Container, Typography, useTheme } from '@mui/material';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const theme = useTheme();
   
   return (
     <Box
       component="footer"
       sx={{
-        backgroundColor: '#1E293B',
-        color: 'white',
+        backgroundColor: theme.palette.primary.dark,
+        color: theme.palette.getContrastText(theme.palette.primary.dark),
         py: 3,
         mt: 'auto',
       }}
