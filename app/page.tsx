@@ -37,6 +37,9 @@ import {
 } from "@mui/icons-material";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import DynamicHeroSection from "./components/DynamicHeroSection";
+import InteractiveCodeShowcase from "./components/InteractiveCodeShowcase";
+import TechTrendTracker from "./components/TechTrendTracker";
 
 const fadeInUp = {
 	initial: { opacity: 0, y: 60 },
@@ -66,53 +69,59 @@ export default function Home() {
 		{
 			title: "AI & Machine Learning",
 			skills:
-				"LLM Integration, Prompt Engineering, AI Orchestration, Vector Databases, RAG, Hugging Face, LangChain, OpenAI API",
+				"LLM Integration, Prompt Engineering, AI Orchestration, Vector Databases, RAG, Hugging Face, LangChain, OpenAI API, Machine Learning Models, TensorFlow, AI Platform Development",
 			icon: <SmartToyIcon />,
 		},
 		{
 			title: "Programming Languages",
-			skills: "JavaScript, Java, TypeScript, C, Python, PHP",
+			skills: "JavaScript, Java, TypeScript, Python, C, PHP, Go, Rust",
 			icon: <CodeIcon />,
 		},
 		{
-			title: "Web Technologies/ Frameworks",
+			title: "Frontend Technologies",
 			skills:
-				"Node.js, Spring Boot, Express, React, Vue, Redux, AngularJS, React Native, jQuery, Next JS, APIGEE",
+				"React, Next.js, Vue.js, Angular, Redux, TypeScript, HTML5, CSS3, Tailwind CSS, Material-UI, Framer Motion, React Native",
 			icon: <WebIcon />,
 		},
 		{
-			title: "Database",
+			title: "Backend Technologies",
 			skills:
-				"MongoDB, MSSQL, MySQL, Oracle 12c, PostgreSQL, Vector Databases (Pinecone, Chroma)",
+				"Node.js, Spring Boot, Express.js, Django, Flask, Java Spring, RESTful APIs, GraphQL, Microservices, Serverless",
+			icon: <CodeIcon />,
+		},
+		{
+			title: "Database & Storage",
+			skills:
+				"MongoDB, PostgreSQL, MySQL, MSSQL, Oracle 12c, Redis, Elasticsearch, Vector Databases (Pinecone, Chroma), DynamoDB",
 			icon: <StorageIcon />,
 		},
 		{
-			title: "Cloud Computing",
+			title: "Cloud & Infrastructure",
 			skills:
-				"Azure and AWS Services, Kubernetes, Docker, Terraform, AWS Lambda, Azure Functions",
+				"AWS (Lambda, EC2, S3, RDS), Azure, GCP, Kubernetes, Docker, Terraform, Serverless Framework, CDN, Load Balancing",
 			icon: <CloudIcon />,
 		},
 		{
-			title: "DevOps",
+			title: "DevOps & Tools",
 			skills:
-				"Git, Jenkins, CI/CD, Ansible, Lambda, Apache Kafka, RabbitMQ, GitHub Actions",
+				"Git, GitHub Actions, Jenkins, CI/CD Pipelines, Ansible, Apache Kafka, RabbitMQ, Monitoring, Logging, Security",
 			icon: <BuildCircleIcon />,
 		},
 		{
-			title: "Testing",
-			skills: "JUnit, Jest, Cucumber, Unit Testing",
+			title: "Testing & Quality",
+			skills: "JUnit, Jest, Cypress, Playwright, Unit Testing, Integration Testing, E2E Testing, TDD, BDD",
 			icon: <BugReportIcon />,
 		},
 		{
 			title: "Modern Development",
 			skills:
-				"AI-Assisted Development, Prompt Engineering, LLM Integration, Microservices Architecture, Serverless Computing",
+				"AI-Assisted Development, Prompt Engineering, LLM Integration, Microservices Architecture, Event-Driven Architecture, Domain-Driven Design",
 			icon: <AutoAwesomeIcon />,
 		},
 		{
-			title: "Others",
+			title: "Methodologies & Others",
 			skills:
-				"Agile, Scrum, GraphQL, Linux, Shell Scripting, .Net, Data Analysis",
+				"Agile, Scrum, System Design, Performance Optimization, Security Best Practices, Code Review, Technical Leadership",
 			icon: <LaptopIcon />,
 		},
 	];
@@ -190,42 +199,17 @@ export default function Home() {
 		<Box className="flex flex-col min-h-screen">
 			<Navbar />
 
-			<Container component="main" sx={{ flexGrow: 1, py: 4 }}>
-				{/* Hero Section with Photo */}
+			<Container component="main" sx={{ flexGrow: 1 }}>
+				{/* Dynamic Hero Section */}
+				<DynamicHeroSection />
+
+				{/* Professional Summary */}
 				<motion.div
 					initial="initial"
 					animate="animate"
 					variants={fadeInUp}
 					className="text-center mb-10"
 				>
-					<motion.div
-						whileHover={{ scale: 1.05 }}
-						whileTap={{ scale: 0.95 }}
-						className="inline-block"
-					>
-						<Avatar
-							src="/GuruprasadVenkatraman.jpg"
-							alt="Guruprasad Venkatraman"
-							sx={{
-								width: 200,
-								height: 200,
-								margin: "0 auto",
-								mb: 3,
-								border: "4px solid #1976d2",
-								boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
-							}}
-						/>
-					</motion.div>
-
-					<Typography
-						variant="h3"
-						component="h1"
-						fontWeight="bold"
-						gutterBottom
-					>
-						Welcome to my Full-Stack Development Journey
-					</Typography>
-
 					<Paper
 						elevation={0}
 						sx={{
@@ -233,22 +217,20 @@ export default function Home() {
 							mb: 4,
 							bgcolor: "rgba(255,255,255,0.7)",
 							borderRadius: 4,
+							mt: 4,
 						}}
 					>
-						<Typography variant="body1" color="text.secondary" paragraph>
-							Hello, I'm Guruprasad Venkatraman, a dedicated and versatile
-							software developer with 5+ years of experience. I bring expertise
-							in a range of programming languages, databases, and cloud
-							computing technologies, with a growing focus on AI integration and
-							modern development practices. My professional journey includes
-							impactful roles at companies like Nomura, where I contribute to
-							AI-driven projects and machine learning model integrations, as
-							well as Hinckley Medical, SkillNet Solutions, and Cleveland State
-							University, where I excelled in crafting responsive web
-							applications and optimizing user experiences. My skills span
-							full-stack development, DevOps, AI orchestration, and testing,
-							complemented by a strong educational background, including a
-							Master's in Computer Science from Cleveland State University.
+						<Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
+							Experienced software developer with 5+ years building scalable web applications 
+							and AI-powered solutions. Currently contributing to AI platform development at 
+							<strong> Nomura</strong>, with expertise in machine learning integrations, cloud architecture, 
+							and modern full-stack development. Proven track record of delivering high-impact 
+							solutions across diverse industries including finance, healthcare, and education.
+						</Typography>
+						<Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.1rem', lineHeight: 1.7, mt: 2 }}>
+							<strong>Master's in Computer Science</strong> from Cleveland State University. 
+							Passionate about leveraging cutting-edge technologies to solve complex business challenges 
+							and mentor emerging developers in the rapidly evolving tech landscape.
 						</Typography>
 					</Paper>
 
@@ -271,22 +253,21 @@ export default function Home() {
 							}}
 						>
 							<Typography variant="subtitle1" fontWeight="bold">
-								Embracing the Future of Development
+								Leading in AI-Driven Development (2025)
 							</Typography>
 							<Typography variant="body2">
-								As development practices evolve in 2025, I'm actively adapting
-								by integrating AI capabilities into my workflow, mastering
-								prompt engineering, and orchestrating AI services to build more
-								intelligent applications. At Nomura, I've gained hands-on
-								experience with machine learning model deployments and AI
-								platform development, positioning me at the forefront of this
-								technological revolution.
+								At the forefront of the AI revolution in software development, I'm actively 
+								implementing LLM integrations, RAG architectures, and AI-assisted development 
+								workflows. My current role at Nomura involves deploying machine learning models 
+								at scale, building intelligent automation systems, and architecting AI-powered 
+								platforms that deliver real business value. This positions me perfectly for 
+								the future of software engineering where AI augments human capabilities.
 							</Typography>
 						</Alert>
 					</motion.div>
 
 					{/* Resume Download Button */}
-					{/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+					<motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
 						<Button
 							variant="contained"
 							size="large"
@@ -296,7 +277,7 @@ export default function Home() {
 						>
 							Download Resume
 						</Button>
-					</motion.div> */}
+					</motion.div>
 				</motion.div>
 
 				{/* Skills Section */}
