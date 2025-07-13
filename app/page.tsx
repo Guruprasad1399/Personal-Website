@@ -1,484 +1,477 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import {
 	Box,
 	Container,
 	Typography,
-	Grid,
 	Card,
 	CardContent,
 	Button,
-	List,
-	ListItem,
-	ListItemText,
-	ListItemIcon,
 	Paper,
-	Divider,
 	Chip,
 	Avatar,
-	Alert,
 } from "@mui/material";
-import {
-	Download as DownloadIcon,
-	Code as CodeIcon,
-	Web as WebIcon,
-	Storage as StorageIcon,
-	Cloud as CloudIcon,
-	BuildCircle as BuildCircleIcon,
-	BugReport as BugReportIcon,
-	Laptop as LaptopIcon,
-	GitHub,
-	Psychology as PsychologyIcon,
-	Lightbulb as LightbulbIcon,
-	AutoAwesome as AutoAwesomeIcon,
-	SmartToy as SmartToyIcon,
-} from "@mui/icons-material";
+import Grid from "@mui/system/Grid";
+import { Download as DownloadIcon, GitHub } from "@mui/icons-material";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import DynamicHeroSection from "./components/DynamicHeroSection";
-import InteractiveCodeShowcase from "./components/InteractiveCodeShowcase";
-import TechTrendTracker from "./components/TechTrendTracker";
-
-const fadeInUp = {
-	initial: { opacity: 0, y: 60 },
-	animate: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
-
-const staggerContainer = {
-	animate: {
-		transition: {
-			staggerChildren: 0.1,
-		},
-	},
-};
 
 export default function Home() {
-	const handleDownload = () => {
-		const resumeUrl = "/Guruprasad_Resume.pdf";
-		const link = document.createElement("a");
-		link.href = resumeUrl;
-		link.download = "Guruprasad_Resume.pdf";
-		document.body.appendChild(link);
-		link.click();
-		document.body.removeChild(link);
-	};
-
-	const skillCategories = [
-		{
-			title: "AI & Machine Learning",
-			skills:
-				"LLM Integration, Prompt Engineering, AI Orchestration, Vector Databases, RAG, Hugging Face, LangChain, OpenAI API, Machine Learning Models, TensorFlow, AI Platform Development",
-			icon: <SmartToyIcon />,
-		},
-		{
-			title: "Programming Languages",
-			skills: "JavaScript, Java, TypeScript, Python, C, PHP, Go, Rust",
-			icon: <CodeIcon />,
-		},
-		{
-			title: "Frontend Technologies",
-			skills:
-				"React, Next.js, Vue.js, Angular, Redux, TypeScript, HTML5, CSS3, Tailwind CSS, Material-UI, Framer Motion, React Native",
-			icon: <WebIcon />,
-		},
-		{
-			title: "Backend Technologies",
-			skills:
-				"Node.js, Spring Boot, Express.js, Django, Flask, Java Spring, RESTful APIs, GraphQL, Microservices, Serverless",
-			icon: <CodeIcon />,
-		},
-		{
-			title: "Database & Storage",
-			skills:
-				"MongoDB, PostgreSQL, MySQL, MSSQL, Oracle 12c, Redis, Elasticsearch, Vector Databases (Pinecone, Chroma), DynamoDB",
-			icon: <StorageIcon />,
-		},
-		{
-			title: "Cloud & Infrastructure",
-			skills:
-				"AWS (Lambda, EC2, S3, RDS), Azure, GCP, Kubernetes, Docker, Terraform, Serverless Framework, CDN, Load Balancing",
-			icon: <CloudIcon />,
-		},
-		{
-			title: "DevOps & Tools",
-			skills:
-				"Git, GitHub Actions, Jenkins, CI/CD Pipelines, Ansible, Apache Kafka, RabbitMQ, Monitoring, Logging, Security",
-			icon: <BuildCircleIcon />,
-		},
-		{
-			title: "Testing & Quality",
-			skills: "JUnit, Jest, Cypress, Playwright, Unit Testing, Integration Testing, E2E Testing, TDD, BDD",
-			icon: <BugReportIcon />,
-		},
-		{
-			title: "Modern Development",
-			skills:
-				"AI-Assisted Development, Prompt Engineering, LLM Integration, Microservices Architecture, Event-Driven Architecture, Domain-Driven Design",
-			icon: <AutoAwesomeIcon />,
-		},
-		{
-			title: "Methodologies & Others",
-			skills:
-				"Agile, Scrum, System Design, Performance Optimization, Security Best Practices, Code Review, Technical Leadership",
-			icon: <LaptopIcon />,
-		},
-	];
-
-	const projects = [
-		{
-			title: "AI-Powered Document Analysis System",
-			description:
-				"Developed an intelligent document processing system that leverages LLMs and vector databases to extract, analyze, and summarize information from various document formats.",
-			achievements: [
-				"Implemented Retrieval Augmented Generation (RAG) using LangChain and vector databases to provide context-aware document analysis.",
-				"Built a custom prompt engineering system that optimizes LLM interactions for specific document types and queries.",
-				"Integrated with OpenAI and Hugging Face models to provide flexible AI capabilities based on specific use cases.",
-				"Created a scalable architecture using AWS Lambda and S3 for document storage and processing.",
-				"Developed a React-based frontend that visualizes document insights and allows for interactive querying.",
-				"Implemented robust security measures to ensure sensitive document data remains protected throughout the AI processing pipeline.",
-			],
-		},
-		{
-			title: "Cloud-Native E-Commerce Backend",
-			description:
-				"Developed a robust cloud-native e-commerce backend using GraphQL and Express.js, providing a scalable and efficient solution for managing online transactions and product data.",
-			achievements: [
-				"Implemented GraphQL for efficient querying and manipulation of data, enhancing the flexibility of API interactions.",
-				"Utilized Express.js to build a performant and modular backend architecture.",
-				"Integrated with cloud services for seamless scalability and improved response times.",
-				"Designed and implemented database schemas for optimal data storage and retrieval.",
-				"Ensured data security and integrity through robust authentication and authorization mechanisms.",
-				"Collaborated with the front-end team to define API contracts and ensure smooth communication between the layers of the application.",
-			],
-		},
-		{
-			title: "Shopify Local App",
-			description:
-				"Participated in a hackathon conducted by Not just dev, contributing to the development of a React Native application that supports local businesses.",
-			details: [
-				"Developed a React Native app, ShopWiseLocal, for the notJust.dev Hackathon.",
-				"Supported local businesses by connecting them with customers through detailed business profiles and a rewards system.",
-				"Implemented a points-based rewards system for users who purchase products from local businesses.",
-				"Utilized React Native and Expo for cross-platform development.",
-				"Focused on innovation by providing a unique approach to support local communities.",
-				"Enabled users to explore and support local businesses, serving as a discovery and engagement platform.",
-			],
-			githubLink: "https://github.com/Guruprasad1399/shopWiseLocal.git",
-		},
-		{
-			title: "Angular Blog Platform",
-			description: "Built a blog platform using Angular and Spring Boot.",
-			techStack: {
-				frontend: "Angular 12, TypeScript, RxJS, Angular Material, NgRx",
-				backend:
-					"Spring Boot 2.5, Java 11, Spring Security, Spring Data JPA, PostgreSQL",
-				database: "PostgreSQL, Amazon S3, Hibernate ORM, Liquibase",
-				deployment: "Docker, Kubernetes, AWS, Jenkins, NGINX",
-				testing: "Jasmine, Karma, JUnit, Mockito, Postman, SonarQube, Cypress",
-			},
-		},
-		{
-			title: "React Native Chat Application",
-			description:
-				"Created various chat applications using React Native. Published two apps on the Play Store.",
-			techStack: {
-				mobile:
-					"React Native 0.64, JavaScript, TypeScript, Expo, React Navigation, Redux",
-				backend: "Node.js, Express, MongoDB, Mongoose, JWT, Socket.io",
-				cloud: "FCM, Firebase Authentication, AWS Lambda, DynamoDB, AWS S3",
-				deployment: "GitHub Actions, Heroku, Netlify, Docker, AWS Amplify",
-				testing:
-					"Jest, Enzyme, Postman, Detox, ESLint, Prettier, GitHub Actions",
-			},
-		},
-	];
-
 	return (
 		<Box className="flex flex-col min-h-screen">
 			<Navbar />
 
 			<Container component="main" sx={{ flexGrow: 1 }}>
-				{/* Dynamic Hero Section */}
+				{/* Hero Section */}
 				<DynamicHeroSection />
 
 				{/* Professional Summary */}
-				<motion.div
-					initial="initial"
-					animate="animate"
-					variants={fadeInUp}
-					className="text-center mb-10"
-				>
-					<Paper
-						elevation={0}
-						sx={{
-							p: 3,
-							mb: 4,
-							bgcolor: "rgba(255,255,255,0.7)",
-							borderRadius: 4,
-							mt: 4,
-						}}
-					>
-						<Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
-							Experienced software developer with 5+ years building scalable web applications 
-							and AI-powered solutions. Currently contributing to AI platform development at 
-							<strong> Nomura</strong>, with expertise in machine learning integrations, cloud architecture, 
-							and modern full-stack development. Proven track record of delivering high-impact 
-							solutions across diverse industries including finance, healthcare, and education.
-						</Typography>
-						<Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.1rem', lineHeight: 1.7, mt: 2 }}>
-							<strong>Master's in Computer Science</strong> from Cleveland State University. 
-							Passionate about leveraging cutting-edge technologies to solve complex business challenges 
-							and mentor emerging developers in the rapidly evolving tech landscape.
-						</Typography>
-					</Paper>
-
-					{/* AI & Modern Development Highlight */}
+				<Container maxWidth="lg" sx={{ py: 8, position: "relative" }}>
 					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.5, duration: 0.8 }}
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.8 }}
+						viewport={{ once: true }}
 					>
-						<Alert
-							severity="info"
-							icon={<PsychologyIcon fontSize="inherit" />}
+						<Paper
+							elevation={6}
 							sx={{
-								mb: 5,
-								borderRadius: 2,
-								"& .MuiAlert-icon": {
-									color: "primary.main",
-									alignItems: "center",
-								},
+								p: 6,
+								borderRadius: 4,
+								background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+								color: "white",
+								position: "relative",
+								overflow: "hidden",
 							}}
 						>
-							<Typography variant="subtitle1" fontWeight="bold">
-								Leading in AI-Driven Development (2025)
-							</Typography>
-							<Typography variant="body2">
-								At the forefront of the AI revolution in software development, I'm actively 
-								implementing LLM integrations, RAG architectures, and AI-assisted development 
-								workflows. My current role at Nomura involves deploying machine learning models 
-								at scale, building intelligent automation systems, and architecting AI-powered 
-								platforms that deliver real business value. This positions me perfectly for 
-								the future of software engineering where AI augments human capabilities.
-							</Typography>
-						</Alert>
-					</motion.div>
-
-					{/* Resume Download Button */}
-					<motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-						<Button
-							variant="contained"
-							size="large"
-							startIcon={<DownloadIcon />}
-							onClick={handleDownload}
-							sx={{ mb: 5 }}
-						>
-							Download Resume
-						</Button>
-					</motion.div>
-				</motion.div>
-
-				{/* Skills Section */}
-				<Box component="section" sx={{ mb: 8 }}>
-					<Typography
-						variant="h4"
-						component="h2"
-						fontWeight="bold"
-						textAlign="center"
-						gutterBottom
-					>
-						Skills
-					</Typography>
-
-					<motion.div
-						variants={staggerContainer}
-						initial="initial"
-						animate="animate"
-					>
-						<Grid container spacing={3}>
-							{skillCategories.map((category, index) => (
-								<Grid size={{ xs: 12, sm: 6, md: 4 }} key={category.title}>
-									<motion.div
-										variants={fadeInUp}
-										whileHover={{
-											y: -5,
-											boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
-										}}
-										style={{ width: "100%" }}
-									>
-										<Card
-											sx={{
-												height: "100%",
-												borderRadius: 3,
-												overflow: "visible",
-											}}
+							<Box sx={{ position: "relative", zIndex: 1 }}>
+								<Grid container spacing={4} alignItems="center">
+									<Grid size={{ xs: 12, md: 8 }}>
+										<Typography
+											variant="h3"
+											component="h1"
+											gutterBottom
+											fontWeight="bold"
 										>
-											<CardContent>
-												<Box display="flex" alignItems="center" mb={1}>
-													<Avatar sx={{ bgcolor: "primary.main", mr: 1 }}>
-														{category.icon}
-													</Avatar>
-													<Typography
-														variant="h6"
-														component="h3"
-														fontWeight="bold"
-													>
-														{category.title}
-													</Typography>
-												</Box>
-												<Typography variant="body2" color="text.secondary">
-													{category.skills}
-												</Typography>
-											</CardContent>
-										</Card>
-									</motion.div>
+											🚀 Software Engineer & AI Innovator
+										</Typography>
+										<Typography
+											variant="h6"
+											sx={{ mb: 3, opacity: 0.9, lineHeight: 1.6 }}
+										>
+											Passionate about building scalable solutions with 44+
+											GitHub repositories spanning AI/ML, cloud architecture,
+											and full-stack development. Currently shaping the future
+											of financial technology at Nomura.
+										</Typography>
+										<Box
+											sx={{ display: "flex", flexWrap: "wrap", gap: 2, mb: 3 }}
+										>
+											{[
+												"🤖 AI/ML Specialist",
+												"☁️ Cloud Architect",
+												"🚀 Full-Stack Developer",
+												"💡 Tech Innovator",
+											].map((skill) => (
+												<Chip
+													key={skill}
+													label={skill}
+													sx={{
+														background: "rgba(255,255,255,0.2)",
+														color: "white",
+														fontWeight: "bold",
+														py: 2,
+														px: 1,
+													}}
+												/>
+											))}
+										</Box>
+										<Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+											<Button
+												variant="outlined"
+												size="large"
+												href="/Guruprasad_Resume.pdf"
+												target="_blank"
+												download
+												startIcon={<DownloadIcon />}
+												sx={{
+													color: "white",
+													borderColor: "white",
+													py: 1.5,
+													px: 3,
+													borderRadius: 3,
+													fontWeight: "bold",
+													"&:hover": {
+														background: "rgba(255,255,255,0.1)",
+														borderColor: "white",
+													},
+												}}
+											>
+												Download Resume
+											</Button>
+											<Button
+												variant="contained"
+												size="large"
+												href="https://github.com/Guruprasad1399"
+												target="_blank"
+												startIcon={<GitHub />}
+												sx={{
+													background: "rgba(255,255,255,0.2)",
+													color: "white",
+													py: 1.5,
+													px: 3,
+													borderRadius: 3,
+													fontWeight: "bold",
+													"&:hover": {
+														background: "rgba(255,255,255,0.3)",
+													},
+												}}
+											>
+												View GitHub Portfolio
+											</Button>
+										</Box>
+									</Grid>
+									<Grid size={{ xs: 12, md: 4 }}>
+										<Box sx={{ textAlign: "center" }}>
+											<motion.div
+												animate={{ rotate: [0, 360] }}
+												transition={{
+													duration: 20,
+													repeat: Infinity,
+													ease: "linear",
+												}}
+											>
+												<Avatar
+													src="/GuruprasadVenkatraman.jpg"
+													sx={{
+														width: 200,
+														height: 200,
+														mx: "auto",
+														mb: 2,
+														border: "4px solid rgba(255,255,255,0.3)",
+														boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+													}}
+												/>
+											</motion.div>
+											<Typography variant="h6" fontWeight="bold">
+												Guruprasad Venkatraman
+											</Typography>
+											<Typography variant="body2" sx={{ opacity: 0.9 }}>
+												📍 New York, NY • 🎯 5+ Years Experience
+											</Typography>
+										</Box>
+									</Grid>
 								</Grid>
-							))}
-						</Grid>
+							</Box>
+						</Paper>
 					</motion.div>
-				</Box>
+				</Container>
 
-				{/* Projects Section */}
-				<Box component="section">
-					<Typography
-						variant="h4"
-						component="h2"
-						fontWeight="bold"
-						textAlign="center"
-						gutterBottom
-						mb={4}
-					>
-						Latest Projects
-					</Typography>
-
+				{/* GitHub Portfolio Showcase */}
+				<Container maxWidth="lg" sx={{ py: 8 }}>
 					<motion.div
-						variants={staggerContainer}
-						initial="initial"
-						animate="animate"
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.6 }}
+						viewport={{ once: true }}
 					>
-						<Grid container spacing={4}>
-							{projects.map((project, index) => (
-								<Grid size={{ xs: 12, md: 6 }} key={project.title}>
-									<motion.div
-										variants={fadeInUp}
-										whileHover={{
-											y: -5,
-											boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
-										}}
-										style={{ width: "100%" }}
-									>
-										<Card sx={{ height: "100%", borderRadius: 3 }}>
-											<CardContent>
-												<Typography
-													variant="h5"
-													component="h3"
-													fontWeight="bold"
-													gutterBottom
-												>
-													{project.title}
-												</Typography>
+						<Typography
+							variant="h3"
+							component="h2"
+							fontWeight="bold"
+							textAlign="center"
+							gutterBottom
+							sx={{
+								mb: 6,
+								background: "linear-gradient(45deg, #FF6B6B, #4ECDC4)",
+								backgroundClip: "text",
+								WebkitBackgroundClip: "text",
+								WebkitTextFillColor: "transparent",
+							}}
+						>
+							🌟 Featured GitHub Projects
+						</Typography>
+					</motion.div>
 
+					<Grid container spacing={4}>
+						{[
+							{
+								name: "NovaTrader",
+								description:
+									"Full-stack trading platform with real-time market data, portfolio management, and advanced analytics",
+								tech: [
+									"TypeScript",
+									"React",
+									"Python",
+									"AWS",
+									"Real-time APIs",
+								],
+								github: "https://github.com/Guruprasad1399/NovaTrader",
+								badge: "⭐ Enterprise",
+							},
+							{
+								name: "AI_App",
+								description:
+									"Advanced AI application with machine learning integrations and intelligent user interfaces",
+								tech: ["TypeScript", "AI/ML", "React", "Next.js", "OpenAI"],
+								github: "https://github.com/Guruprasad1399/AI_App",
+								badge: "🤖 AI-Powered",
+							},
+							{
+								name: "Cloud E-commerce Backend",
+								description:
+									"Scalable microservices architecture for high-volume e-commerce operations",
+								tech: ["Node.js", "GraphQL", "Docker", "Kubernetes", "MongoDB"],
+								github:
+									"https://github.com/Guruprasad1399/Cloud-native_e-commerce-Backend",
+								badge: "☁️ Cloud Native",
+							},
+							{
+								name: "Angular Blog Platform",
+								description:
+									"Modern full-stack blogging platform with rich text editing and real-time collaboration",
+								tech: [
+									"Angular",
+									"TypeScript",
+									"Spring Boot",
+									"Java",
+									"PostgreSQL",
+								],
+								github:
+									"https://github.com/Guruprasad1399/angular-blog-platform",
+								badge: "📝 Full-Stack",
+							},
+							{
+								name: "ShopWiseLocal",
+								description:
+									"React Native mobile app connecting users with local businesses and services",
+								tech: [
+									"React Native",
+									"JavaScript",
+									"Node.js",
+									"Firebase",
+									"Maps API",
+								],
+								github: "https://github.com/Guruprasad1399/shopWiseLocal",
+								badge: "🏆 Award Winner",
+							},
+							{
+								name: "MAUI Cross-Platform App",
+								description:
+									".NET MAUI Windows application with Bluetooth connectivity and device integration",
+								tech: ["C#", ".NET MAUI", "Windows", "Bluetooth", "IoT"],
+								github: "https://github.com/Guruprasad1399/MAUI_App",
+								badge: "📱 Cross-Platform",
+							},
+						].map((project, index) => (
+							<Grid size={{ xs: 12, md: 6 }} key={project.name}>
+								<motion.div
+									initial={{ opacity: 0, y: 30 }}
+									whileInView={{ opacity: 1, y: 0 }}
+									transition={{ delay: index * 0.1, duration: 0.6 }}
+									viewport={{ once: true }}
+									whileHover={{ y: -5 }}
+								>
+									<Card
+										component="a"
+										href={project.github}
+										target="_blank"
+										sx={{
+											height: "100%",
+											borderRadius: 3,
+											overflow: "hidden",
+											textDecoration: "none",
+											background:
+												"linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+											border: "1px solid rgba(0,0,0,0.1)",
+											transition: "all 0.3s ease",
+											"&:hover": {
+												transform: "translateY(-5px)",
+												boxShadow: "0 12px 40px rgba(0,0,0,0.15)",
+												borderColor: "primary.main",
+											},
+										}}
+									>
+										<CardContent sx={{ p: 4 }}>
+											<Box
+												sx={{
+													display: "flex",
+													justifyContent: "space-between",
+													alignItems: "center",
+													mb: 2,
+												}}
+											>
+												<Typography
+													variant="h6"
+													fontWeight="bold"
+													color="primary"
+												>
+													{project.name}
+												</Typography>
+												<Chip
+													label={project.badge}
+													size="small"
+													sx={{
+														background:
+															"linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
+														color: "white",
+														fontWeight: "bold",
+													}}
+												/>
+											</Box>
+											<Typography
+												variant="body2"
+												sx={{ mb: 3, color: "text.secondary", lineHeight: 1.6 }}
+											>
+												{project.description}
+											</Typography>
+											<Box
+												sx={{
+													display: "flex",
+													flexWrap: "wrap",
+													gap: 0.5,
+													mb: 2,
+												}}
+											>
+												{project.tech.map((tech) => (
+													<Chip
+														key={tech}
+														label={tech}
+														size="small"
+														variant="outlined"
+														sx={{
+															fontSize: "0.75rem",
+															height: "24px",
+															borderColor: "primary.main",
+															color: "primary.main",
+														}}
+													/>
+												))}
+											</Box>
+											<Box
+												sx={{
+													display: "flex",
+													alignItems: "center",
+													justifyContent: "space-between",
+												}}
+											>
 												<Typography
 													variant="body2"
-													color="text.secondary"
-													paragraph
+													color="primary"
+													fontWeight="bold"
 												>
-													{project.description}
+													View on GitHub →
 												</Typography>
+												<GitHub color="primary" />
+											</Box>
+										</CardContent>
+									</Card>
+								</motion.div>
+							</Grid>
+						))}
+					</Grid>
 
-												{project.achievements && (
-													<>
-														<Typography
-															variant="subtitle1"
-															fontWeight="bold"
-															gutterBottom
-														>
-															Key Achievements:
-														</Typography>
-														<List dense>
-															{project.achievements.map((achievement, i) => (
-																<ListItem key={i} sx={{ pl: 0 }}>
-																	<ListItemIcon sx={{ minWidth: 28 }}>
-																		•
-																	</ListItemIcon>
-																	<ListItemText primary={achievement} />
-																</ListItem>
-															))}
-														</List>
-													</>
-												)}
-
-												{project.details && (
-													<>
-														<Typography
-															variant="subtitle1"
-															fontWeight="bold"
-															gutterBottom
-														>
-															Project Details:
-														</Typography>
-														<List dense>
-															{project.details.map((detail, i) => (
-																<ListItem key={i} sx={{ pl: 0 }}>
-																	<ListItemIcon sx={{ minWidth: 28 }}>
-																		•
-																	</ListItemIcon>
-																	<ListItemText primary={detail} />
-																</ListItem>
-															))}
-														</List>
-														{project.githubLink && (
-															<Button
-																variant="outlined"
-																size="small"
-																href={project.githubLink}
-																target="_blank"
-																startIcon={<GitHub />}
-																sx={{ mt: 1 }}
-															>
-																View on GitHub
-															</Button>
-														)}
-													</>
-												)}
-
-												{project.techStack && (
-													<>
-														<Typography
-															variant="subtitle1"
-															fontWeight="bold"
-															gutterBottom
-															mt={2}
-														>
-															Tech Stack:
-														</Typography>
-														<Grid container spacing={1}>
-															{Object.entries(project.techStack).map(
-																([key, value]) => (
-																	<Grid size={{ xs: 12 }} key={key}>
-																		<Chip
-																			label={`${
-																				key.charAt(0).toUpperCase() +
-																				key.slice(1)
-																			}: ${value}`}
-																			sx={{ mb: 0.5 }}
-																		/>
-																	</Grid>
-																)
-															)}
-														</Grid>
-													</>
-												)}
-											</CardContent>
-										</Card>
-									</motion.div>
-								</Grid>
-							))}
-						</Grid>
+					{/* GitHub Stats */}
+					<motion.div
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.8, delay: 0.3 }}
+						viewport={{ once: true }}
+					>
+						<Box sx={{ textAlign: "center", mt: 6 }}>
+							<Button
+								variant="contained"
+								size="large"
+								href="https://github.com/Guruprasad1399?tab=repositories"
+								target="_blank"
+								startIcon={<GitHub />}
+								sx={{
+									py: 2,
+									px: 4,
+									borderRadius: 4,
+									fontSize: "1.1rem",
+									fontWeight: "bold",
+									background:
+										"linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
+									"&:hover": {
+										background:
+											"linear-gradient(45deg, #1976D2 30%, #1CB5E0 90%)",
+										transform: "translateY(-2px)",
+										boxShadow: "0 8px 25px rgba(33,150,243,0.3)",
+									},
+									transition: "all 0.3s ease",
+								}}
+							>
+								Explore All 44+ Repositories
+							</Button>
+							<Typography variant="body2" sx={{ mt: 2, opacity: 0.7 }}>
+								Showcasing expertise in AI/ML, Cloud Architecture, Full-Stack
+								Development, and more
+							</Typography>
+						</Box>
 					</motion.div>
-				</Box>
+				</Container>
+
+				{/* Professional Experience Highlight */}
+				<Container maxWidth="lg" sx={{ py: 8 }}>
+					<motion.div
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.8 }}
+						viewport={{ once: true }}
+					>
+						<Paper
+							elevation={8}
+							sx={{
+								p: 6,
+								borderRadius: 4,
+								background: "linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)",
+								color: "white",
+								textAlign: "center",
+							}}
+						>
+							<Typography
+								variant="h4"
+								component="h2"
+								fontWeight="bold"
+								gutterBottom
+							>
+								💼 Professional Journey
+							</Typography>
+							<Typography variant="h6" sx={{ mb: 4, opacity: 0.9 }}>
+								Software Analyst at Nomura • New York, NY
+							</Typography>
+							<Grid container spacing={6} sx={{ mt: 2 }}>
+								{[
+									{ number: "5+", label: "Years Experience" },
+									{ number: "44+", label: "GitHub Repos" },
+									{ number: "15+", label: "Technologies" },
+									{ number: "100%", label: "Dedication" },
+								].map((stat) => (
+									<Grid size={{ xs: 6, md: 3 }} key={stat.label}>
+										<motion.div
+											whileHover={{ scale: 1.05 }}
+											transition={{ type: "spring", stiffness: 300 }}
+										>
+											<Typography
+												variant="h3"
+												component="div"
+												fontWeight="bold"
+											>
+												{stat.number}
+											</Typography>
+											<Typography variant="body1" sx={{ opacity: 0.9 }}>
+												{stat.label}
+											</Typography>
+										</motion.div>
+									</Grid>
+								))}
+							</Grid>
+						</Paper>
+					</motion.div>
+				</Container>
 			</Container>
 
 			<Footer />
