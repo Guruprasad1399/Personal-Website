@@ -12,40 +12,46 @@ import {
 	Drawer,
 	List,
 	ListItem,
+	Typography,
 } from "@mui/material";
 import {
-	HomeRounded,
 	LinkedIn,
 	GitHub,
 	Menu as MenuIcon,
+	Download as DownloadIcon,
 } from "@mui/icons-material";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
 
 const navItems = [
-	{ name: "Home", href: "/", icon: <HomeRounded /> },
 	{
-		name: "LinkedIn",
-		href: "https://www.linkedin.com/in/guruprasad-venkatraman-588591153/",
-		icon: <LinkedIn />,
+		name: "Resume",
+		href: "/Guruprasad_Resume.pdf",
+		icon: <DownloadIcon />,
+		external: true,
+		download: true,
 	},
 	{
 		name: "GitHub",
 		href: "https://github.com/Guruprasad1399?tab=repositories",
 		icon: <GitHub />,
+		external: true,
+	},
+	{
+		name: "LinkedIn",
+		href: "https://www.linkedin.com/in/guruprasad-venkatraman-588591153/",
+		icon: <LinkedIn />,
+		external: true,
 	},
 ];
 
 export default function Navbar() {
-	const isMobile = useMediaQuery("(max-width:600px)");
+	const isMobile = useMediaQuery("(max-width:768px)");
 	const [drawerOpen, setDrawerOpen] = React.useState(false);
 	const [scrolled, setScrolled] = React.useState(false);
-	const pathname = usePathname();
 
 	React.useEffect(() => {
 		const handleScroll = () => {
-			setScrolled(window.scrollY > 50);
+			setScrolled(window.scrollY > 20);
 		};
 		window.addEventListener("scroll", handleScroll);
 		return () => window.removeEventListener("scroll", handleScroll);
@@ -58,40 +64,30 @@ export default function Navbar() {
 	const NavLinks = () => (
 		<>
 			{navItems.map((item) => (
-				<motion.div
+				<Button
 					key={item.name}
-					whileHover={{ scale: 1.05 }}
-					whileTap={{ scale: 0.95 }}
+					component={Link}
+					href={item.href}
+					target={item.external ? "_blank" : undefined}
+					download={item.download ? true : undefined}
+					color="inherit"
+					startIcon={item.icon}
+					sx={{
+						mx: 1,
+						px: 3,
+						py: 1,
+						borderRadius: 2,
+						fontWeight: 500,
+						textTransform: "none",
+						"&:hover": {
+							backgroundColor: "rgba(37, 99, 235, 0.1)",
+							color: "primary.main",
+						},
+						transition: "all 0.2s ease",
+					}}
 				>
-					<Button
-						component={Link}
-						href={item.href}
-						color="inherit"
-						startIcon={item.icon}
-						sx={{
-							mr: 2,
-							borderBottom:
-								pathname === item.href ? "2px solid #4ECDC4" : "none",
-							borderRadius: 2,
-							px: 3,
-							py: 1,
-							fontWeight: pathname === item.href ? "bold" : "normal",
-							background:
-								pathname === item.href
-									? "rgba(78, 205, 196, 0.1)"
-									: "transparent",
-							"&:hover": {
-								backgroundColor: "rgba(255, 255, 255, 0.15)",
-								backdropFilter: "blur(10px)",
-								transform: "translateY(-2px)",
-								boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
-							},
-							transition: "all 0.3s ease",
-						}}
-					>
-						{item.name}
-					</Button>
-				</motion.div>
+					{item.name}
+				</Button>
 			))}
 		</>
 	);
@@ -99,28 +95,57 @@ export default function Navbar() {
 	return (
 		<AppBar
 			position="sticky"
+			elevation={0}
 			sx={{
-				marginBottom: 2,
-				background: scrolled
-					? "rgba(30, 41, 59, 0.95)"
-					: "linear-gradient(135deg, #1E293B 0%, #334155 100%)",
-				backdropFilter: scrolled ? "blur(20px)" : "none",
-				boxShadow: scrolled ? "0 8px 32px rgba(0,0,0,0.1)" : "none",
+				backgroundColor: scrolled ? "rgba(255, 255, 255, 0.95)" : "white",
+				backdropFilter: scrolled ? "blur(10px)" : "none",
+				borderBottom: scrolled ? "1px solid rgba(0, 0, 0, 0.1)" : "none",
+				color: "text.primary",
 				transition: "all 0.3s ease",
 			}}
 		>
-			<Container maxWidth="xl">
+			<Container maxWidth="lg">
 				<Toolbar
 					disableGutters
-					sx={{ justifyContent: isMobile ? "flex-end" : "center" }}
+					sx={{
+						justifyContent: "space-between",
+						py: 1,
+					}}
 				>
-					{isMobile ? (
+					{/* Logo/Name */}
+					<Typography
+						variant="h6"
+						component={Link}
+						href="/"
+						sx={{
+							fontWeight: 700,
+							textDecoration: "none",
+							color: "inherit",
+							"&:hover": {
+								color: "primary.main",
+							},
+							transition: "color 0.2s ease",
+						}}
+					>
+						Guruprasad V.
+					</Typography>
+
+					{/* Desktop Navigation */}
+					{!isMobile ? (
+						<Box sx={{ display: "flex", alignItems: "center" }}>
+							<NavLinks />
+						</Box>
+					) : (
 						<>
 							<IconButton
 								color="inherit"
 								aria-label="open drawer"
-								edge="start"
 								onClick={handleDrawerToggle}
+								sx={{
+									"&:hover": {
+										backgroundColor: "rgba(37, 99, 235, 0.1)",
+									},
+								}}
 							>
 								<MenuIcon />
 							</IconButton>
@@ -128,21 +153,47 @@ export default function Navbar() {
 								anchor="right"
 								open={drawerOpen}
 								onClose={handleDrawerToggle}
+								PaperProps={{
+									sx: {
+										width: 280,
+										backgroundColor: "white",
+									},
+								}}
 							>
 								<Box
-									sx={{ width: 250 }}
+									sx={{ p: 3 }}
 									role="presentation"
 									onClick={handleDrawerToggle}
 								>
-									<List>
+									<Typography
+										variant="h6"
+										sx={{ mb: 3, fontWeight: 600, color: "text.primary" }}
+									>
+										Navigation
+									</Typography>
+									<List sx={{ p: 0 }}>
 										{navItems.map((item) => (
-											<ListItem key={item.name} disablePadding>
+											<ListItem key={item.name} disablePadding sx={{ mb: 1 }}>
 												<Button
 													component={Link}
 													href={item.href}
+													target={item.external ? "_blank" : undefined}
+													download={item.download ? true : undefined}
 													fullWidth
 													startIcon={item.icon}
-													sx={{ justifyContent: "flex-start", py: 1.5 }}
+													sx={{
+														justifyContent: "flex-start",
+														py: 2,
+														px: 3,
+														borderRadius: 2,
+														textTransform: "none",
+														fontWeight: 500,
+														color: "text.primary",
+														"&:hover": {
+															backgroundColor: "rgba(37, 99, 235, 0.1)",
+															color: "primary.main",
+														},
+													}}
 												>
 													{item.name}
 												</Button>
@@ -152,10 +203,6 @@ export default function Navbar() {
 								</Box>
 							</Drawer>
 						</>
-					) : (
-						<Box sx={{ display: "flex", justifyContent: "center" }}>
-							<NavLinks />
-						</Box>
 					)}
 				</Toolbar>
 			</Container>
