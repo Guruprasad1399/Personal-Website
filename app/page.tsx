@@ -65,7 +65,19 @@ export default function Home() {
 							fontSize: { xs: "1.25rem", md: "1.5rem" },
 						}}
 					>
-						Full-Stack Software Engineer & AI Specialist
+						Full-Stack Software Engineer & AI/ML Innovator
+					</Typography>
+					<Typography
+						variant="h6"
+						color="text.secondary"
+						sx={{
+							mb: 4,
+							fontWeight: 300,
+							fontSize: { xs: "1rem", md: "1.1rem" },
+							fontStyle: "italic",
+						}}
+					>
+						Building the future with Claude, GPT-4, LangChain, and cutting-edge AI technologies
 					</Typography>
 
 					<Box
@@ -150,17 +162,21 @@ export default function Home() {
 							I'm a passionate full-stack software engineer with 5+ years of
 							experience building scalable solutions and AI-powered
 							applications. Currently working as a Software Analyst at Nomura in
-							New York, I specialize in modern web technologies, cloud
-							architecture, and machine learning integrations.
+							New York, I specialize in leveraging cutting-edge AI technologies
+							including Claude, GPT-4, Gemini, and LangChain to create
+							innovative solutions that solve real-world problems.
 						</Typography>
 						<Typography
 							variant="body1"
 							sx={{ fontSize: "1.1rem", lineHeight: 1.7 }}
 						>
-							With a Master's degree in Computer Science from Cleveland State
-							University and 44+ GitHub repositories, I'm committed to
-							continuous learning and contributing to innovative projects that
-							make a real impact.
+							My expertise spans the full AI development stack - from fine-tuning
+							LLMs and building RAG systems with vector databases (Pinecone,
+							Weaviate) to deploying production AI applications on cloud
+							platforms. With 44+ GitHub repositories and hands-on experience
+							with the latest AI tools, I'm at the forefront of the AI
+							revolution, continuously exploring new ways to integrate
+							intelligent systems into modern applications.
 						</Typography>
 					</Paper>
 				</Container>
@@ -203,6 +219,50 @@ export default function Home() {
 								],
 							},
 							{
+								category: "Latest AI/ML Tools",
+								skills: [
+									"Claude (Anthropic)",
+									"GPT-4 & GPT-4o",
+									"Gemini",
+									"LangChain",
+									"LlamaIndex",
+									"Hugging Face",
+								],
+							},
+							{
+								category: "AI Development Stack",
+								skills: [
+									"OpenAI API",
+									"Anthropic API",
+									"RAG Systems",
+									"Vector Databases",
+									"Prompt Engineering",
+									"Fine-tuning",
+								],
+							},
+							{
+								category: "Vector & Data Stores",
+								skills: [
+									"Pinecone",
+									"Weaviate",
+									"ChromaDB",
+									"FAISS",
+									"Qdrant",
+									"Milvus",
+								],
+							},
+							{
+								category: "AI Frameworks",
+								skills: [
+									"TensorFlow",
+									"PyTorch",
+									"Transformers",
+									"LangGraph",
+									"AutoGPT",
+									"Semantic Kernel",
+								],
+							},
+							{
 								category: "Cloud & DevOps",
 								skills: [
 									"AWS",
@@ -214,17 +274,6 @@ export default function Home() {
 								],
 							},
 							{
-								category: "AI/ML & Data",
-								skills: [
-									"Machine Learning",
-									"OpenAI",
-									"TensorFlow",
-									"Python",
-									"Data Analytics",
-									"LLM Integration",
-								],
-							},
-							{
 								category: "Databases",
 								skills: [
 									"PostgreSQL",
@@ -233,17 +282,6 @@ export default function Home() {
 									"MySQL",
 									"Firebase",
 									"DynamoDB",
-								],
-							},
-							{
-								category: "Mobile Development",
-								skills: [
-									"React Native",
-									".NET MAUI",
-									"Cross-platform",
-									"iOS",
-									"Android",
-									"Hybrid Apps",
 								],
 							},
 						].map((skillGroup) => (
@@ -294,72 +332,65 @@ export default function Home() {
 					<Grid container spacing={4}>
 						{[
 							{
+								name: "AI-Powered RAG System",
+								description:
+									"Production-ready Retrieval-Augmented Generation system using Claude, LangChain, and Pinecone for intelligent document Q&A with context-aware responses",
+								tech: [
+									"Claude API",
+									"LangChain",
+									"Pinecone",
+									"Python",
+									"FastAPI",
+								],
+								github: "https://github.com/Guruprasad1399/AI_App",
+								category: "AI/ML",
+							},
+							{
+								name: "Multi-Model AI Application",
+								description:
+									"Advanced AI application integrating GPT-4, Gemini, and Claude for comparative analysis, featuring prompt optimization and response streaming",
+								tech: ["GPT-4", "Gemini", "Claude", "Next.js", "TypeScript", "OpenAI"],
+								github: "https://github.com/Guruprasad1399/AI_App",
+								category: "AI/ML",
+							},
+							{
+								name: "LangChain Agent System",
+								description:
+									"Autonomous AI agent framework with tool calling, memory management, and chain-of-thought reasoning using LangChain and vector stores",
+								tech: ["LangChain", "OpenAI", "ChromaDB", "Python", "React"],
+								github: "https://github.com/Guruprasad1399/AI_App",
+								category: "AI Agents",
+							},
+							{
 								name: "NovaTrader",
 								description:
-									"Full-stack trading platform with real-time market data, portfolio management, and advanced analytics",
+									"Full-stack trading platform with AI-powered market analysis, real-time data processing, and ML-based prediction models",
 								tech: [
 									"TypeScript",
 									"React",
 									"Python",
 									"AWS",
-									"Real-time APIs",
+									"ML Models",
 								],
 								github: "https://github.com/Guruprasad1399/NovaTrader",
-								category: "Enterprise",
+								category: "FinTech AI",
 							},
 							{
-								name: "AI Application",
+								name: "Vector Database RAG System",
 								description:
-									"Advanced AI application with machine learning integrations and intelligent user interfaces",
-								tech: ["TypeScript", "AI/ML", "React", "Next.js", "OpenAI"],
+									"Scalable semantic search and RAG implementation using multiple vector databases with performance benchmarking and optimization",
+								tech: ["Weaviate", "Pinecone", "FAISS", "Python", "LangChain"],
 								github: "https://github.com/Guruprasad1399/AI_App",
-								category: "AI/ML",
+								category: "AI Infrastructure",
 							},
 							{
 								name: "Cloud E-commerce Backend",
 								description:
-									"Scalable microservices architecture for high-volume e-commerce operations",
+									"Scalable microservices architecture for high-volume e-commerce operations with AI-powered recommendations and search",
 								tech: ["Node.js", "GraphQL", "Docker", "Kubernetes", "MongoDB"],
 								github:
 									"https://github.com/Guruprasad1399/Cloud-native_e-commerce-Backend",
 								category: "Cloud Native",
-							},
-							{
-								name: "Angular Blog Platform",
-								description:
-									"Modern full-stack blogging platform with rich text editing and real-time collaboration",
-								tech: [
-									"Angular",
-									"TypeScript",
-									"Spring Boot",
-									"Java",
-									"PostgreSQL",
-								],
-								github:
-									"https://github.com/Guruprasad1399/angular-blog-platform",
-								category: "Full-Stack",
-							},
-							{
-								name: "ShopWiseLocal",
-								description:
-									"React Native mobile app connecting users with local businesses and services",
-								tech: [
-									"React Native",
-									"JavaScript",
-									"Node.js",
-									"Firebase",
-									"Maps API",
-								],
-								github: "https://github.com/Guruprasad1399/shopWiseLocal",
-								category: "Mobile",
-							},
-							{
-								name: "MAUI Cross-Platform App",
-								description:
-									".NET MAUI Windows application with Bluetooth connectivity and device integration",
-								tech: ["C#", ".NET MAUI", "Windows", "Bluetooth", "IoT"],
-								github: "https://github.com/Guruprasad1399/MAUI_App",
-								category: "Cross-Platform",
 							},
 						].map((project) => (
 							<Grid size={{ xs: 12, md: 6 }} key={project.name}>
@@ -510,19 +541,24 @@ export default function Home() {
 						</Box>
 
 						<Typography variant="body1" sx={{ lineHeight: 1.7, mb: 3 }}>
-							Leading development of AI-powered financial solutions and scalable
-							trading platforms. Responsible for architecting cloud-native
-							applications, implementing machine learning models, and optimizing
-							system performance for high-frequency trading environments.
+							Leading development of AI-powered financial solutions and next-generation
+							trading platforms. Architecting and deploying production AI systems using
+							Claude, GPT-4, and LangChain for intelligent automation, natural language
+							processing, and data analysis. Responsible for building RAG systems with
+							vector databases, implementing AI agents, and optimizing LLM performance
+							in high-frequency trading environments.
 						</Typography>
 
 						<Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
 							{[
+								"AI/ML Production Systems",
+								"Claude & GPT-4 Integration",
+								"LangChain Development",
+								"Vector Databases",
+								"RAG Systems",
 								"Financial Technology",
-								"AI/ML Integration",
 								"Cloud Architecture",
 								"Trading Systems",
-								"Performance Optimization",
 							].map((skill) => (
 								<Chip
 									key={skill}
