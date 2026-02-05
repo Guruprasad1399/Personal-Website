@@ -56,8 +56,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'OpenAI API key not configured' }, { status: 500 });
     }
 
+    // Using OpenAI's GPT-3.5-turbo model for the AI chatbot
+    // To use a different model, change the model parameter below
+    // Available models: gpt-4, gpt-4-turbo, gpt-3.5-turbo, etc.
+    // Note: This is NOT using Claude/Anthropic - it uses OpenAI models
     const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: process.env.OPENAI_MODEL || "gpt-3.5-turbo",
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
         { role: "user", content: message }

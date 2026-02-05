@@ -55,7 +55,7 @@ export default function AIChatbot() {
 	const [messages, setMessages] = useState<Message[]>([
 		{
 			id: "1",
-			text: "Hi! I'm Guruprasad's AI assistant. Ask me about his experience, skills, or projects!",
+			text: "Hi! I'm an AI assistant powered by OpenAI's GPT-3.5-turbo. Ask me about Guruprasad's experience, skills, or projects!",
 			isUser: false,
 			timestamp: new Date(),
 		},
@@ -177,7 +177,7 @@ export default function AIChatbot() {
 								AI Assistant
 							</Typography>
 							<Typography variant="body2" sx={{ opacity: 0.9 }}>
-								Ask about Guruprasad's work
+								Powered by OpenAI GPT-3.5-turbo
 							</Typography>
 						</Box>
 					</Box>
