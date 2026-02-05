@@ -4,14 +4,11 @@ import {
 	Box,
 	Container,
 	Typography,
-	Card,
-	CardContent,
 	Button,
 	Paper,
 	Chip,
 	Avatar,
 } from "@mui/material";
-import Grid from "@mui/system/Grid";
 import {
 	Download as DownloadIcon,
 	GitHub,
@@ -22,6 +19,8 @@ import {
 } from "@mui/icons-material";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import AIChatbot from "./components/AIChatbot";
+import AIProjectRecommender from "./components/AIProjectRecommender";
 
 export default function Home() {
 	return (
@@ -178,7 +177,7 @@ export default function Home() {
 						Technical Skills
 					</Typography>
 
-					<Grid container spacing={4}>
+					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
 						{[
 							{
 								category: "Frontend Development",
@@ -247,7 +246,7 @@ export default function Home() {
 								],
 							},
 						].map((skillGroup) => (
-							<Grid size={{ xs: 12, md: 6 }} key={skillGroup.category}>
+							<Box key={skillGroup.category} sx={{ flex: '1 1 calc(50% - 16px)', minWidth: '300px' }}>
 								<Paper sx={{ p: 4, height: "100%" }}>
 									<Typography
 										variant="h6"
@@ -273,199 +272,14 @@ export default function Home() {
 										))}
 									</Box>
 								</Paper>
-							</Grid>
+							</Box>
 						))}
-					</Grid>
+					</Box>
 				</Container>
 
-				{/* Featured Projects */}
+				{/* AI Project Recommender */}
 				<Container maxWidth="lg" sx={{ py: 8 }}>
-					<Typography
-						variant="h3"
-						component="h2"
-						gutterBottom
-						className="gradient-text"
-						textAlign="center"
-						sx={{ mb: 6 }}
-					>
-						Featured Projects
-					</Typography>
-
-					<Grid container spacing={4}>
-						{[
-							{
-								name: "NovaTrader",
-								description:
-									"Full-stack trading platform with real-time market data, portfolio management, and advanced analytics",
-								tech: [
-									"TypeScript",
-									"React",
-									"Python",
-									"AWS",
-									"Real-time APIs",
-								],
-								github: "https://github.com/Guruprasad1399/NovaTrader",
-								category: "Enterprise",
-							},
-							{
-								name: "AI Application",
-								description:
-									"Advanced AI application with machine learning integrations and intelligent user interfaces",
-								tech: ["TypeScript", "AI/ML", "React", "Next.js", "OpenAI"],
-								github: "https://github.com/Guruprasad1399/AI_App",
-								category: "AI/ML",
-							},
-							{
-								name: "Cloud E-commerce Backend",
-								description:
-									"Scalable microservices architecture for high-volume e-commerce operations",
-								tech: ["Node.js", "GraphQL", "Docker", "Kubernetes", "MongoDB"],
-								github:
-									"https://github.com/Guruprasad1399/Cloud-native_e-commerce-Backend",
-								category: "Cloud Native",
-							},
-							{
-								name: "Angular Blog Platform",
-								description:
-									"Modern full-stack blogging platform with rich text editing and real-time collaboration",
-								tech: [
-									"Angular",
-									"TypeScript",
-									"Spring Boot",
-									"Java",
-									"PostgreSQL",
-								],
-								github:
-									"https://github.com/Guruprasad1399/angular-blog-platform",
-								category: "Full-Stack",
-							},
-							{
-								name: "ShopWiseLocal",
-								description:
-									"React Native mobile app connecting users with local businesses and services",
-								tech: [
-									"React Native",
-									"JavaScript",
-									"Node.js",
-									"Firebase",
-									"Maps API",
-								],
-								github: "https://github.com/Guruprasad1399/shopWiseLocal",
-								category: "Mobile",
-							},
-							{
-								name: "MAUI Cross-Platform App",
-								description:
-									".NET MAUI Windows application with Bluetooth connectivity and device integration",
-								tech: ["C#", ".NET MAUI", "Windows", "Bluetooth", "IoT"],
-								github: "https://github.com/Guruprasad1399/MAUI_App",
-								category: "Cross-Platform",
-							},
-						].map((project) => (
-							<Grid size={{ xs: 12, md: 6 }} key={project.name}>
-								<Card
-									component="a"
-									href={project.github}
-									target="_blank"
-									sx={{
-										height: "100%",
-										textDecoration: "none",
-										cursor: "pointer",
-									}}
-								>
-									<CardContent sx={{ p: 4 }}>
-										<Box
-											sx={{
-												display: "flex",
-												justifyContent: "space-between",
-												alignItems: "flex-start",
-												mb: 2,
-											}}
-										>
-											<Typography
-												variant="h6"
-												fontWeight={600}
-												color="text.primary"
-												sx={{ flex: 1 }}
-											>
-												{project.name}
-											</Typography>
-											<Chip
-												label={project.category}
-												size="small"
-												color="primary"
-												variant="outlined"
-												sx={{ ml: 2 }}
-											/>
-										</Box>
-										<Typography
-											variant="body2"
-											color="text.secondary"
-											sx={{ mb: 3, lineHeight: 1.6 }}
-										>
-											{project.description}
-										</Typography>
-										<Box
-											sx={{
-												display: "flex",
-												flexWrap: "wrap",
-												gap: 1,
-												mb: 3,
-											}}
-										>
-											{project.tech.map((tech) => (
-												<Chip
-													key={tech}
-													label={tech}
-													size="small"
-													variant="outlined"
-													sx={{
-														fontSize: "0.75rem",
-														height: "24px",
-														borderColor: "grey.300",
-														color: "text.secondary",
-													}}
-												/>
-											))}
-										</Box>
-										<Box
-											sx={{
-												display: "flex",
-												alignItems: "center",
-												color: "primary.main",
-											}}
-										>
-											<GitHub sx={{ mr: 1, fontSize: 20 }} />
-											<Typography variant="body2" fontWeight={500}>
-												View on GitHub
-											</Typography>
-										</Box>
-									</CardContent>
-								</Card>
-							</Grid>
-						))}
-					</Grid>
-
-					<Box sx={{ textAlign: "center", mt: 6 }}>
-						<Button
-							variant="contained"
-							size="large"
-							href="https://github.com/Guruprasad1399?tab=repositories"
-							target="_blank"
-							startIcon={<GitHub />}
-							sx={{ mr: 2, mb: { xs: 2, sm: 0 } }}
-						>
-							View All 44+ Repositories
-						</Button>
-						<Button
-							variant="outlined"
-							size="large"
-							href="mailto:vgp1399@gmail.com"
-							startIcon={<Email />}
-						>
-							Get In Touch
-						</Button>
-					</Box>
+					<AIProjectRecommender />
 				</Container>
 
 				{/* Professional Experience */}
@@ -539,14 +353,14 @@ export default function Home() {
 					</Paper>
 
 					{/* Stats Section */}
-					<Grid container spacing={4}>
+					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
 						{[
 							{ number: "5+", label: "Years Experience" },
 							{ number: "44+", label: "GitHub Repositories" },
 							{ number: "15+", label: "Technologies Mastered" },
 							{ number: "100+", label: "Projects Delivered" },
 						].map((stat) => (
-							<Grid size={{ xs: 6, md: 3 }} key={stat.label}>
+							<Box key={stat.label} sx={{ flex: '1 1 calc(25% - 16px)', minWidth: '150px' }}>
 								<Paper sx={{ p: 3, textAlign: "center", height: "100%" }}>
 									<Typography
 										variant="h4"
@@ -564,9 +378,9 @@ export default function Home() {
 										{stat.label}
 									</Typography>
 								</Paper>
-							</Grid>
+							</Box>
 						))}
-					</Grid>
+					</Box>
 				</Container>
 
 				{/* Call to Action */}
@@ -621,6 +435,7 @@ export default function Home() {
 			</Container>
 
 			<Footer />
+			<AIChatbot />
 		</Box>
 	);
 }
