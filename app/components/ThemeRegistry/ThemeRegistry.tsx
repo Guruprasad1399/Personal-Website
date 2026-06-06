@@ -1,18 +1,16 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import EmotionCache from './EmotionCache';
-import theme from './theme';
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v16-appRouter";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import theme from "./theme";
 
 export default function ThemeRegistry({ children }: { children: React.ReactNode }) {
-  return (
-    <EmotionCache options={{ key: 'mui' }}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline enableColorScheme />
-        {children}
-      </ThemeProvider>
-    </EmotionCache>
-  );
+	return (
+		<AppRouterCacheProvider options={{ key: "mui", enableCssLayer: true }}>
+			<ThemeProvider theme={theme} defaultMode="system">
+				<CssBaseline />
+				{children}
+			</ThemeProvider>
+		</AppRouterCacheProvider>
+	);
 }
