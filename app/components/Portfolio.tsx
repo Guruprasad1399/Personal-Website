@@ -500,85 +500,6 @@ function ExpertiseSection() {
 	);
 }
 
-function ContactForm() {
-	const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
-	const [errorMsg, setErrorMsg] = useState("");
-	const [fields, setFields] = useState({ name: "", email: "", message: "" });
-
-	async function handleSubmit(e: React.FormEvent) {
-		e.preventDefault();
-		setStatus("sending");
-		setErrorMsg("");
-		try {
-			const res = await fetch("/api/contact", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(fields),
-			});
-			const data = await res.json() as { error?: string };
-			if (!res.ok) {
-				setErrorMsg(data.error ?? "Something went wrong.");
-				setStatus("error");
-			} else {
-				setStatus("sent");
-			}
-		} catch {
-			setErrorMsg("Network error. Please email me directly.");
-			setStatus("error");
-		}
-	}
-
-	if (status === "sent") {
-		return (
-			<Box className="form-success">
-				<Check size={24} />
-				<Typography>Message sent. I&apos;ll get back to you soon.</Typography>
-			</Box>
-		);
-	}
-
-	return (
-		<Box component="form" onSubmit={handleSubmit} className="contact-form">
-			<Box className="form-row">
-				<input
-					required
-					placeholder="Your name"
-					autoComplete="name"
-					value={fields.name}
-					onChange={(e) => setFields((f) => ({ ...f, name: e.target.value }))}
-				/>
-				<input
-					required
-					type="email"
-					placeholder="Your email"
-					autoComplete="email"
-					value={fields.email}
-					onChange={(e) => setFields((f) => ({ ...f, email: e.target.value }))}
-				/>
-			</Box>
-			<textarea
-				required
-				placeholder="What are you working on?"
-				rows={5}
-				value={fields.message}
-				onChange={(e) => setFields((f) => ({ ...f, message: e.target.value }))}
-			/>
-			{status === "error" && (
-				<Typography sx={{ fontSize: 13, color: "#ff735d" }}>{errorMsg}</Typography>
-			)}
-			<Button
-				type="submit"
-				variant="contained"
-				disabled={status === "sending"}
-				endIcon={<ArrowUpRight size={18} />}
-				sx={{ alignSelf: "flex-start" }}
-			>
-				{status === "sending" ? "Sending…" : "Send message"}
-			</Button>
-		</Box>
-	);
-}
-
 function ContactSection() {
 	return (
 		<Box component="section" id="contact" className="contact-section">
@@ -588,14 +509,13 @@ function ContactSection() {
 						<Typography className="eyebrow">04 / Contact</Typography>
 						<Typography variant="h2">Let&apos;s build what&apos;s next.</Typography>
 						<Typography className="contact-copy">I&apos;m selectively exploring senior full-stack, platform, and applied AI opportunities where technical depth and product outcomes matter.</Typography>
-						<Box className="contact-links">
-							<a href={`mailto:${profile.email}`}><Mail size={22} /><span>Email<strong>{profile.email}</strong></span><ArrowUpRight size={20} /></a>
-							<a href={`tel:${profile.phoneHref}`}><Phone size={22} /><span>Phone<strong>{profile.phoneDisplay}</strong></span><ArrowUpRight size={20} /></a>
-							<a href={profile.linkedin} target="_blank" rel="noreferrer"><LinkedInIcon sx={{ fontSize: 22 }} /><span>LinkedIn<strong>Connect professionally</strong></span><ArrowUpRight size={20} /></a>
-							<a href={profile.github} target="_blank" rel="noreferrer"><GitHubIcon sx={{ fontSize: 22 }} /><span>GitHub<strong>@Guruprasad1399</strong></span><ArrowUpRight size={20} /></a>
-						</Box>
 					</Box>
-					<ContactForm />
+					<Box className="contact-links">
+						<a href={`mailto:${profile.email}`}><Mail size={22} /><span>Email<strong>{profile.email}</strong></span><ArrowUpRight size={20} /></a>
+						<a href={`tel:${profile.phoneHref}`}><Phone size={22} /><span>Phone<strong>{profile.phoneDisplay}</strong></span><ArrowUpRight size={20} /></a>
+						<a href={profile.linkedin} target="_blank" rel="noreferrer"><LinkedInIcon sx={{ fontSize: 22 }} /><span>LinkedIn<strong>Connect professionally</strong></span><ArrowUpRight size={20} /></a>
+						<a href={profile.github} target="_blank" rel="noreferrer"><GitHubIcon sx={{ fontSize: 22 }} /><span>GitHub<strong>@Guruprasad1399</strong></span><ArrowUpRight size={20} /></a>
+					</Box>
 				</Box>
 				<Divider />
 				<Box className="footer-row"><Typography>© {new Date().getFullYear()} Guruprasad Venkatraman</Typography><Typography>Designed and engineered with Next.js, React, MUI & Motion.</Typography></Box>

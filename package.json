@@ -15,10 +15,12 @@
     "@mui/icons-material": "^9.0.1",
     "@mui/material": "^9.0.1",
     "@mui/material-nextjs": "^9.0.1",
+    "@types/nodemailer": "^8.0.1",
     "docx": "^9.7.1",
     "lucide-react": "^1.17.0",
     "motion": "^12.40.0",
     "next": "^16.2.7",
+    "nodemailer": "^8.0.11",
     "pdfkit": "^0.18.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
