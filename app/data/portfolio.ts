@@ -33,7 +33,7 @@ export type Education = {
 export const profile = {
 	siteUrl: "https://personal-website-drab-two-71.vercel.app",
 	name: "Guruprasad Venkatraman",
-	headline: "Full-Stack Engineer | AI & Cloud Specialist",
+	headline: "Senior Software Engineer · AI & Cloud",
 	location: "Bensalem, Pennsylvania",
 	status: "Selectively open to opportunities",
 	email: "vgp1399@gmail.com",

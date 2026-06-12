@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 		template: "%s | Guruprasad Venkatraman",
 	},
 	description:
-		"Senior software engineer building AI-enabled platforms, cloud-native services, and modern full-stack products.",
+		"Senior Software Engineer specialising in AI-enabled platforms, cloud-native microservices, and full-stack enterprise products.",
 	keywords: [
 		"Guruprasad Venkatraman",
 		"Senior Software Engineer",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "Guruprasad Venkatraman | Senior Software Engineer",
 		description:
-			"AI, cloud, and full-stack engineering for complex enterprise systems.",
+			"Senior Software Engineer · AI-enabled platforms, cloud-native microservices, and full-stack enterprise products.",
 		type: "website",
 		images: ["/GuruprasadVenkatraman.jpg"],
 	},
