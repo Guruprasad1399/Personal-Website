@@ -42,7 +42,7 @@ export const profile = {
 	github: "https://github.com/Guruprasad1399",
 	linkedin:
 		"https://www.linkedin.com/in/guruprasad-venkatraman-588591153/",
-	careerStart: "2021-10" as YearMonth,
+	careerStart: "2020-10" as YearMonth,
 	verifiedImpact: {
 		usersSupported: 200,
 		processingImprovementPercent: 40,
@@ -132,6 +132,17 @@ export const experiences: Experience[] = [
 			"Led mobile development across React Native, Node.js APIs, Firebase notifications, testing, and Jenkins-based delivery.",
 		highlights: [],
 		stack: ["React Native", "Node.js", "Firebase", "Redux", "Jenkins"],
+	},
+	{
+		company: "Triloki Smart Systems",
+		role: "Software Developer",
+		start: "2020-10",
+		end: "2021-07",
+		location: "Bangalore, India",
+		summary:
+			"Built and maintained backend systems, API integrations, and cloud-based solutions, with a focus on deployment automation and data reporting pipelines.",
+		highlights: [],
+		stack: ["Java", "SQL", "Jenkins", "REST APIs"],
 	},
 ];
 
